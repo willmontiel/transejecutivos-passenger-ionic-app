@@ -24,7 +24,7 @@ export class ServiceProvider {
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     */
     
-    return this.http.get('assets/information.json')
+    return this.http.get('assets/example-data.json')
       .map(res => <DataList[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }

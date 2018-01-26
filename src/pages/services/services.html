@@ -6,17 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar primary>
     <ion-title>services</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content>
   <ion-list class="accordion-list">
     <!-- First Level -->
-    <ion-list-header *ngFor="let item of dataList; let i = index" no-lines no-padding>
+    <ion-list-header *ngFor="let item of dataList; let i = index" no-lines no-padding class="mb-5">
       <!-- Toggle Button -->
       <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
         <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>
@@ -35,10 +34,14 @@
           </button>
  
           <!-- Direct Add Button as Fallback -->
-          <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-            <h2>{{ child.code }}</h2>
-            <p text-lowercase>{{ child.startDate }}</p>
-          </ion-item>
+          <ion-card *ngIf="!child.children">
+            <ion-card-header>
+              {{ child.code }}
+            </ion-card-header>
+            <ion-card-content>
+              {{ child.startDate }}
+            </ion-card-content>
+          </ion-card>
         </ion-list-header>
       </ion-list>
       
