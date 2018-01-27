@@ -146,8 +146,27 @@
 
         <ion-col col-8>
           <ion-col col-12 no-padding>
-            {{ service?.driver?.car?.name }} {{ service?.driver?.car?.model }}
+            <ion-item no-padding text-wrap>
+              {{ service?.driver?.car?.name }} {{ service?.driver?.car?.model }}
+            </ion-item>
+            <ion-item no-padding text-wrap>
+              {{ service?.driver?.car?.carType?.name }}
+            </ion-item>
           </ion-col>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="bt pl-15 pr-15 pt-5 pb-5" 
+        *ngIf="service?.observations && service?.observations?.length && observation.type == 'public'"
+        *ngFor="let observation of service?.observations; let i = index">
+
+        <ion-col col-12>
+          <ion-item no-padding text-wrap class="danger-fg">
+            Observaciones
+          </ion-item>
+          <ion-item no-padding text-wrap class="danger-fg">
+              {{ observation?.observations }}
+          </ion-item>
         </ion-col>
       </ion-row>
     </ion-card-content>
