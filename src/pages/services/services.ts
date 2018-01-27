@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 //Models
-import { DataList } from '../../models/data-list';
+import { Service } from '../../models/service';
 
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
@@ -17,7 +17,7 @@ import { ServicePage } from '../../pages/service/service';
   templateUrl: 'services.html',
 })
 export class ServicesPage {
-  dataList: DataList[];
+  services: Service[];
   constructor(public navCtrl: NavController, 
       public navParams: NavParams, 
       private serviceProvider: ServiceProvider,
@@ -28,8 +28,8 @@ export class ServicesPage {
     let loading = miscProvider.createLoader('Cargando');
 
     loading.present();
-    serviceProvider.getServicesByDate('', '').subscribe(dataList => {
-      this.dataList = dataList;
+    serviceProvider.getServicesByDate('', '').subscribe(services => {
+      this.services = services;
       loading.dismiss();
     },
     err => {
@@ -42,14 +42,6 @@ export class ServicesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ServicesPage');
-  }
-
-  toggleSection(i) {
-    this.dataList[i].open = !this.dataList[i].open;
-  }
- 
-  toggleItem(i, j) {
-    this.dataList[i].children[j].open = !this.dataList[i].children[j].open;
   }
 
   goToService(service) {

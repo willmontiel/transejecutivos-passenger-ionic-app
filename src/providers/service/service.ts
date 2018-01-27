@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { DataList } from '../../models/data-list';
+import { Service } from '../../models/service';
 
 /*
   Generated class for the ServiceProvider provider.
@@ -17,7 +17,7 @@ export class ServiceProvider {
 
   constructor(public http: Http) {}
 
-  getServicesByDate(startDate: string, endDate: string): Observable<DataList[]> {
+  getServicesByDate(startDate: string, endDate: string): Observable<Service[]> {
     /*
     return this.http.get(`${this.marvelApiUrl}${this.marvelApiVersion}${this.marvelAllCharacters}${this.marvelApiKey}${this.marvelHash}${this.marvelTimestamp}${this.marvelOffset}${offset}`)
       .map(res => <Character[]>res.json().data.results)
@@ -25,7 +25,7 @@ export class ServiceProvider {
     */
     
     return this.http.get('assets/example-data.json')
-      .map(res => <DataList[]>res.json().data)
+      .map(res => <Service[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 }

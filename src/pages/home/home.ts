@@ -12,13 +12,19 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
     this.pages = [
       {
-        'title': 'Ver servicios',
-        'icon': 'list',
+        'title': 'Mis reservas',
+        'icon': 'list-box',
         'color': 'secondary',
         'page': 'ServicesPage'
       },
       {
-        'title': 'Solicitar servicio',
+        'title': 'Reservas anteriores',
+        'icon': 'archive',
+        'color': 'orange',
+        'page': 'ServicesPage'
+      },
+      {
+        'title': 'Nueva reserva',
         'icon': 'briefcase',
         'color': 'primary',
         'page': 'RequestServicePage'
@@ -27,6 +33,18 @@ export class HomePage {
         'title': 'Buscar servicio',
         'icon': 'search',
         'color': 'dark',
+        'page': 'RequestServicePage'
+      },
+      {
+        'title': 'Llámenos',
+        'icon': 'call',
+        'color': 'dark-brown',
+        'page': 'RequestServicePage'
+      },
+      {
+        'title': 'Cerrar sesión',
+        'icon': 'close-circle',
+        'color': 'danger',
         'page': 'RequestServicePage'
       },
       {
