@@ -14,7 +14,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content no-padding>
   <ion-list class="accordion-list">
     <!-- First Level -->
     <ion-list-header *ngFor="let item of dataList; let i = index" no-lines no-padding class="mb-5">
@@ -35,9 +35,11 @@
           </button>
  
           <!-- Direct Add Button as Fallback -->
-          <ion-card *ngIf="!child.children">
+          <ion-card *ngIf="!child.children" (click)="goToService(child)">
             <ion-card-header>
-              {{ child?.code }}
+              <ion-item no-padding text-wrap class="dark-brown-fg">
+                {{ child?.code }}
+              </ion-item>
             </ion-card-header>
             <ion-card-content>
               <ion-row>
@@ -75,13 +77,13 @@
               </ion-row>
 
               <ion-row class="bt" *ngIf="child?.driver">
-                <ion-col col-8>
+                <ion-col col-10>
                   <ion-item no-padding text-wrap>
                     <ion-icon name="car"></ion-icon> 
                     {{ child?.driver?.name }} {{ child?.driver?.lastname }} 
                   </ion-item>
                 </ion-col>
-                <ion-col col-4>
+                <ion-col col-2>
                   <ion-item no-padding text-wrap class="text-right">
                     <ion-icon name="call" color="danger"></ion-icon>
                   </ion-item>

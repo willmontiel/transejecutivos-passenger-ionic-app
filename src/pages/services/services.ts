@@ -8,6 +8,9 @@ import { DataList } from '../../models/data-list';
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
 
+//Pages
+import { ServicePage } from '../../pages/service/service';
+
 @IonicPage()
 @Component({
   selector: 'page-services',
@@ -47,6 +50,10 @@ export class ServicesPage {
  
   toggleItem(i, j) {
     this.dataList[i].children[j].open = !this.dataList[i].children[j].open;
+  }
+
+  goToService(service) {
+    this.navCtrl.push(ServicePage, { service: service });
   }
 
 }

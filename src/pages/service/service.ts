@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the ServicePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+//Models
+import { Service } from '../../models/service';
 
 @IonicPage()
 @Component({
@@ -14,8 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'service.html',
 })
 export class ServicePage {
+  service: Service;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.service = navParams.data.service;
   }
 
   ionViewDidLoad() {
