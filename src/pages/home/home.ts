@@ -3,13 +3,26 @@ import { NavController } from 'ionic-angular';
 import { ServicesPage } from '../../pages/services/services';
 import { RequestServicePage } from '../../pages/request-service/request-service';
 
+//Providers
+import { AuthProvider } from '../../providers/auth/auth';
+//Pages
+import { LoginPage } from '../../pages/login/login';
+//Models
+import { User } from '../../models/user';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   pages = [];
-  constructor(public navCtrl: NavController) {
+  user: User;
+
+  constructor(public navCtrl: NavController,
+    private authProvider: AuthProvider) {
+
+    this.validateSession();
+
     this.pages = [
       {
         'title': 'Mis reservas',
@@ -21,7 +34,7 @@ export class HomePage {
         'title': 'Reservas anteriores',
         'icon': 'archive',
         'color': 'orange',
-        'page': 'ServicesPage'
+        'page': 'OlderServicesPage'
       },
       {
         'title': 'Nueva reserva',
@@ -56,12 +69,30 @@ export class HomePage {
     ]
   }
 
+  validateSession() {
+    this.authProvider.getSession().then(
+      (val) => { 
+        if (!val) {
+          this.navCtrl.setRoot(LoginPage);
+        } else {
+          this.user = val;
+        }
+      }
+    )
+    .catch(
+      (error:any) => {
+        console.log('Error', error);
+      }
+    );
+  }
+  
   goToPage(page) {
     if (page == 'ServicesPage') {
-      this.navCtrl.push(ServicesPage);
+      this.navCtrl.push(ServicesPage, {time: 'present'});
+    } else if (page == 'OlderServicesPage') {
+      this.navCtrl.push(ServicesPage, {time: 'past'});
     } else if (page == 'RequestServicePage') {
       this.navCtrl.push(RequestServicePage);
     }
-    
   }
 }

@@ -7,14 +7,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { MiscProvider } from '../../providers/misc/misc';
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
 //Pages
-import { ServicesPage } from '../../pages/services/services';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HomePage } from '../../pages/home/home';
 
 @IonicPage()
 @Component({
@@ -33,18 +26,18 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
 
+  }
   
   public login() {
     let loading = this.miscProvider.createLoader('Cargando');
     loading.present();
 
     this.authProvider.login(this.credentials).subscribe(user => {
-      console.log("User ", user);
       this.user = user;
+      this.authProvider.saveSession(this.user);
       loading.dismiss();
+      this.navCtrl.setRoot(HomePage);
     },
     err => {
         console.log(err);

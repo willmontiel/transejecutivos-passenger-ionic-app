@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +17,7 @@ import { ServiceProvider } from '../providers/service/service';
 import { MiscProvider } from '../providers/misc/misc';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiConfigProvider } from '../providers/api-config/api-config';
+import { DbProvider } from '../providers/db/db';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,11 @@ import { ApiConfigProvider } from '../providers/api-config/api-config';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot({
+      name: '__transejecutivosp',
+         driverOrder: ['sqlite', 'indexeddb', 'websql']
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,6 +52,7 @@ import { ApiConfigProvider } from '../providers/api-config/api-config';
     MiscProvider,
     AuthProvider,
     ApiConfigProvider,
+    DbProvider,
   ]
 })
 export class AppModule {}

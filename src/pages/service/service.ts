@@ -17,7 +17,7 @@ export class ServicePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ServicePage');
+    
   }
 
 }
