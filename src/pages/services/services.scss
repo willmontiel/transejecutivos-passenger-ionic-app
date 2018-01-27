@@ -9,7 +9,7 @@ page-services {
         margin-bottom: 4px;
     }
     .section-active {
-        background: #ffc400;
+        background: color($colors, secondary);
         color: #fff;
     }
  
@@ -27,9 +27,5 @@ page-services {
     }
     .list {
         margin-bottom: 4px;
-    }
-
-    .mb-5 {
-        margin-bottom: 5px !important;
     }
 }

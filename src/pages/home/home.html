@@ -1,21 +1,52 @@
 <ion-header>
-  <ion-navbar primary>
-    <ion-title>Dashboard</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Inicio</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col col-6>
-        This column will take 6 columns
+      <ion-col col-12>
+        <ion-img class="all-width h-50 bg-transparent" src="../../assets/imgs/logo-large.png"></ion-img>
       </ion-col>
     </ion-row>
     <ion-row>
+      <ion-col col-6 (click)="goToServices()">
+        <div>
+            <ion-icon name="list" color="secondary"></ion-icon>
+        </div>
+        <div color="secondary">
+          Ver servicios
+        </div>
+      </ion-col>
       <ion-col col-6>
-        This column will take 6 columns
+        <div>
+            <ion-icon name="briefcase" color="primary"></ion-icon>
+        </div>
+        <div color="primary">
+          Solicitar servicio
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <div>
+            <ion-icon name="search" color="dark"></ion-icon>
+        </div>
+        <div color="dark">
+          Buscar servicio
+        </div>
+      </ion-col>
+      <ion-col col-6>
+        <div>
+            <ion-icon name="exit" color="success"></ion-icon>
+        </div>
+        <div color="success">
+          Salir
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <button primary (click)="goToServices()">Servicios</button>
 </ion-content>

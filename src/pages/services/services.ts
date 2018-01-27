@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 //Models
 import { DataList } from '../../models/data-list';
 
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
+import { MiscProvider } from '../../providers/misc/misc';
 
 @IonicPage()
 @Component({
@@ -14,12 +15,25 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class ServicesPage {
   dataList: DataList[];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private serviceProvider: ServiceProvider) {
+  constructor(public navCtrl: NavController, 
+      public navParams: NavParams, 
+      private serviceProvider: ServiceProvider,
+      private miscProvider: MiscProvider,
+      public loadingCtrl: LoadingController,
+      private alertCtrl: AlertController) {
+      
+    let loading = miscProvider.createLoader('Cargando');
+
+    loading.present();
     serviceProvider.getServicesByDate('', '').subscribe(dataList => {
       this.dataList = dataList;
+      loading.dismiss();
     },
     err => {
         console.log(err);
+        loading.dismiss();
+        let alert = miscProvider.createAlert("Error", err, ['Close']);
+        alert.present();
     })
   }
 

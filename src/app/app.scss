@@ -14,3 +14,38 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.bg-transparent {
+    background-color: transparent !important;
+}
+
+.all-width {
+    width: 100%;
+}
+
+.h-30 {
+    height: 30px;
+}
+
+.h-50 {
+    height: 50px;
+}
+
+.m-5 {
+    margin: 5px !important;
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mr-5 {
+    margin-right: 5px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.ml-5 {
+    margin-left: 5px !important;
+}
