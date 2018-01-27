@@ -53,7 +53,6 @@ export class RequestServicePage {
   }
 
   getCarTypes() {
-    console.log("Getting cars");
     this.serviceProvider.getCarTypes(this.user).subscribe(carTypes => {
       this.carTypes = carTypes;
       console.log(this.carTypes);

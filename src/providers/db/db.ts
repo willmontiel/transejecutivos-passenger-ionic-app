@@ -22,7 +22,7 @@ export class DbProvider {
   getUser() {
     return this.storage.get('user')
       .then(data => {
-        return Promise.resolve(data)
+        return Promise.resolve(JSON.parse(data))
       })
       .catch(error => Promise.reject(error));
   }

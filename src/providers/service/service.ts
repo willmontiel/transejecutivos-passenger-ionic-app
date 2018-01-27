@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 //Providers
@@ -29,7 +29,7 @@ export class ServiceProvider {
     let headers = new Headers();
     
     headers.append('Authorization', user.api_key);
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append('Content-Type', 'application/json');
 
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, { headers: headers })
       .map(res => <Service[]>res.json().data)
@@ -37,14 +37,13 @@ export class ServiceProvider {
   }
 
   getCarTypes(user: User): Observable<CarType[]> {
-    /*
-    let headers = new Headers();
-    
-    headers.append('Authorization', user.api_key);
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-*/
+    let headers = new Headers({
+      'Authorization': user.api_key,
+    });
 
-    return this.http.get(this.apiConfigProvider.get().getCarTypes)
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.apiConfigProvider.get().getCarTypes, options)
       .map(res => <Service[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
