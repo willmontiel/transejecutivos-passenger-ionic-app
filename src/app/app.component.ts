@@ -4,6 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { LoginPage } from '../pages/login/login';
+//Providers
+import { AuthProvider } from '../providers/auth/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,17 +16,23 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public authProvider: AuthProvider) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Inicio', component: HomePage },
-      { title: 'Solicitar servicio', component: HomePage },
-      { title: 'Cerrar sesión', component: HomePage }
-    ];
+    this.authProvider.getSession().then(
+      (val) => { 
+        if (!val) {
+          this.rootPage = LoginPage;
+        } else {
+          this.rootPage = HomePage;
+        }
+      }
+    )
+    .catch(
+      (error:any) => {
+        console.log('Error', error);
+      }
+    );
   }
 
   initializeApp() {

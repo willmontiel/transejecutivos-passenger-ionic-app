@@ -26,9 +26,10 @@ export class ServiceProvider {
 
   getServicesByDate(data: any, user: User): Observable<Service[]> {
     let headers = new Headers();
+    
     headers.append('Authorization', user.api_key);
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    console.log("D" , data);
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, { headers: headers })
       .map(res => <Service[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));

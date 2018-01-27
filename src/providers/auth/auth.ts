@@ -9,12 +9,6 @@ import { DbProvider } from '../db/db';
 //Models
 import { User } from '../../models/user';
 
-/*
-  Generated class for the AuthProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AuthProvider {
 

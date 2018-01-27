@@ -3,25 +3,14 @@ import { NavController } from 'ionic-angular';
 import { ServicesPage } from '../../pages/services/services';
 import { RequestServicePage } from '../../pages/request-service/request-service';
 
-//Providers
-import { AuthProvider } from '../../providers/auth/auth';
-//Pages
-import { LoginPage } from '../../pages/login/login';
-//Models
-import { User } from '../../models/user';
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
   pages = [];
-  user: User;
 
-  constructor(public navCtrl: NavController,
-    private authProvider: AuthProvider) {
-
-    this.validateSession();
+  constructor(public navCtrl: NavController) {
 
     this.pages = [
       {
@@ -67,23 +56,6 @@ export class HomePage {
         'page': 'RequestServicePage'
       },
     ]
-  }
-
-  validateSession() {
-    this.authProvider.getSession().then(
-      (val) => { 
-        if (!val) {
-          this.navCtrl.setRoot(LoginPage);
-        } else {
-          this.user = val;
-        }
-      }
-    )
-    .catch(
-      (error:any) => {
-        console.log('Error', error);
-      }
-    );
   }
   
   goToPage(page) {

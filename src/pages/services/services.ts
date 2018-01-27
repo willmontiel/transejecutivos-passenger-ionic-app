@@ -65,7 +65,7 @@ export class ServicesPage {
     err => {
         console.log(err);
         loading.dismiss();
-        let alert = this.miscProvider.createAlert("Error", err, ['Close']);
+        let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
         alert.present();
     });
   }
