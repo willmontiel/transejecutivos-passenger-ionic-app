@@ -1,15 +1,7 @@
-<!--
-  Generated template for the ServicePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Detalle de servicio</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -156,17 +148,22 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="bt pl-15 pr-15 pt-5 pb-5" 
-        *ngIf="service?.observations && service?.observations?.length && observation.type == 'public'"
-        *ngFor="let observation of service?.observations; let i = index">
-
-        <ion-col col-12>
-          <ion-item no-padding text-wrap class="danger-fg">
-            Observaciones
-          </ion-item>
-          <ion-item no-padding text-wrap class="danger-fg">
-              {{ observation?.observations }}
-          </ion-item>
+      <ion-row no-padding *ngIf="service?.observations && service?.observations?.length">
+        <ion-col col-12 no-padding>
+          <ion-row *ngFor="let observation of service?.observations; let i = index">
+            <ion-col col-12 no-padding>
+              <ion-row class="bt-danger pl-15 pr-15 pt-5 pb-5" *ngIf="observation?.type == 'public'">
+                <ion-col col-12 no-padding>
+                  <ion-item no-padding text-wrap class="mb-5">
+                    {{ observation?.label }}
+                  </ion-item>
+                  <ion-item no-padding text-wrap class="danger-fg">
+                    {{ observation?.observations }}
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-card-content>

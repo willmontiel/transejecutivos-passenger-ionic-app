@@ -18,8 +18,16 @@
     background-color: transparent !important;
 }
 
+.primary-bg {
+    background-color: color($colors, primary) !important;
+}
+
 .primary-fg {
     color: color($colors, primary);
+}
+
+.danger-fg {
+    color: color($colors, danger);
 }
 
 .secondary-fg {
@@ -140,4 +148,32 @@
 
 .bt {
     border-top: 1px solid color($colors, secondary);
+}
+
+.br {
+    border-right: 1px solid color($colors, secondary);
+}
+
+.bb {
+    border-bottom: 1px solid color($colors, secondary);
+}
+
+.bl {
+    border-left: 1px solid color($colors, secondary);
+}
+
+.bt-danger {
+    border-top: 1px solid color($colors, danger);
+}
+
+.br-danger {
+    border-right: 1px solid color($colors, danger);
+}
+
+.bb-danger {
+    border-bottom: 1px solid color($colors, danger);
+}
+
+.bl-danger {
+    border-left: 1px solid color($colors, danger);
 }
