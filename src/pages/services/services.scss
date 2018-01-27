@@ -28,4 +28,12 @@ page-services {
     .list {
         margin-bottom: 4px;
     }
+
+    ion-card.cards-list-demo ion-card-header {
+        border-bottom: .55px solid #c8c7cc;
+    }
+
+    .item-block {
+        min-height: 0rem !important;
+    }
 }
