@@ -25,7 +25,6 @@ export class MyApp {
       { title: 'Solicitar servicio', component: HomePage },
       { title: 'Cerrar sesión', component: HomePage }
     ];
-
   }
 
   initializeApp() {

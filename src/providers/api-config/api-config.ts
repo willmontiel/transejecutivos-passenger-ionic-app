@@ -17,4 +17,8 @@ export class ApiConfigProvider {
       getServicesByDate: URL_BASE + "/" + API_BASE + "/" + API_V1 + "/" + this.getServicesByDate
     }
   }
+
+  getVersion() {
+    return 'Versión 2.0';
+  }
 }

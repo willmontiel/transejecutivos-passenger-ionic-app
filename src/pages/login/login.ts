@@ -5,6 +5,7 @@ import { User } from '../../models/user';
 //Providers
 import { AuthProvider } from '../../providers/auth/auth';
 import { MiscProvider } from '../../providers/misc/misc';
+import { ApiConfigProvider } from '../../providers/api-config/api-config';
 //Pages
 import { ServicesPage } from '../../pages/services/services';
 
@@ -27,7 +28,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private authProvider: AuthProvider,
-    private miscProvider: MiscProvider) {
+    private miscProvider: MiscProvider,
+    private apiConfigProvider: ApiConfigProvider) {
   }
 
   ionViewDidLoad() {
@@ -40,13 +42,14 @@ export class LoginPage {
     loading.present();
 
     this.authProvider.login(this.credentials).subscribe(user => {
+      console.log("User ", user);
       this.user = user;
       loading.dismiss();
     },
     err => {
         console.log(err);
         loading.dismiss();
-        let alert = this.miscProvider.createAlert("Error", err, ['Close']);
+        let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
         alert.present();
     });
   }

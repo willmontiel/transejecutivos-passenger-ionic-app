@@ -17,7 +17,7 @@ import { User } from '../../models/user';
 export class AuthProvider {
 
   constructor(public http: Http, private apiConfigProvider: ApiConfigProvider) {
-    console.log('Hello AuthProvider Provider');
+    
   }
 
   login(credentials) {
@@ -25,7 +25,7 @@ export class AuthProvider {
       return Observable.throw("Por favor digite su correo y la contraseña.");
     }
 
-    return this.http.get(this.apiConfigProvider.get().login)
+    return this.http.post(this.apiConfigProvider.get().login, credentials)
       .map(
         res => <User>res.json().data
       )
