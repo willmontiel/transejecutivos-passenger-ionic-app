@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 //Providers
 import { ApiConfigProvider } from '../api-config/api-config';
-import { DbProvider } from '../db/db';
 //Models
 import { User } from '../../models/user';
 
@@ -13,8 +12,7 @@ import { User } from '../../models/user';
 export class AuthProvider {
 
   constructor(public http: Http, 
-    private apiConfigProvider: ApiConfigProvider,
-    private dbProvider: DbProvider) {
+    private apiConfigProvider: ApiConfigProvider) {
     
   }
 
@@ -30,13 +28,5 @@ export class AuthProvider {
       .catch(
         (error:any) => Observable.throw(error.json().message || 'Server error')
       );
-  }
-
-  saveSession(user: User) {
-    this.dbProvider.saveUser(user);
-  }
-
-  getSession() {
-    return this.dbProvider.getUser();
   }
 }

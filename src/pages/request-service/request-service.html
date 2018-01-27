@@ -5,14 +5,36 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>request-service</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Nueva reserva</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
+  <form (ngSubmit)="requestService()" #requestServiceForm="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime name="date" displayFormat="YYYY-MMM-DD" pickerFormat="YYYY-MMM-DD" [(ngModel)]="data.date"></ion-datetime>
+      </ion-item>
 
+      <ion-item>
+        <ion-label>Hora</ion-label>
+        <ion-datetime name="time" displayFormat="hh:mm" pickerFormat="hh:mm" [(ngModel)]="data.time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <google-places-autocomplete (callback)="setSource($event[0])" key="AIzaSyD6B-5HTA4p7x9bsuP39so3lXfDOqreLXw"></google-places-autocomplete>
+      </ion-item>
+
+      <ion-item>
+        <google-places-autocomplete (callback)="setDestiny($event[0])" key="AIzaSyD6B-5HTA4p7x9bsuP39so3lXfDOqreLXw"></google-places-autocomplete>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de vehículo</ion-label>
+      </ion-item>
+    </ion-list>
+  </form>
 </ion-content>

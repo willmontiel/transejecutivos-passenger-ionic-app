@@ -11,7 +11,6 @@ export class HomePage {
   pages = [];
 
   constructor(public navCtrl: NavController) {
-
     this.pages = [
       {
         'title': 'Mis reservas',

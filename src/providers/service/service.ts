@@ -8,6 +8,7 @@ import { DbProvider } from '../db/db';
 //Models
 import { Service } from '../../models/service';
 import { User } from '../../models/user';
+import { CarType } from '../../models/car-type';
 
 
 /*
@@ -31,6 +32,19 @@ export class ServiceProvider {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, { headers: headers })
+      .map(res => <Service[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
+  getCarTypes(user: User): Observable<CarType[]> {
+    /*
+    let headers = new Headers();
+    
+    headers.append('Authorization', user.api_key);
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+*/
+
+    return this.http.get(this.apiConfigProvider.get().getCarTypes)
       .map(res => <Service[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }

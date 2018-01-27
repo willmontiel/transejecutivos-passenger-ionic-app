@@ -16,10 +16,14 @@ export class DbProvider {
   }
 
   removeUser() {
-    this.storage.remove('user');
+    return this.storage.remove('user');
   }
 
   getUser() {
-    return this.storage.get('user');
+    return this.storage.get('user')
+      .then(data => {
+        return Promise.resolve(data)
+      })
+      .catch(error => Promise.reject(error));
   }
 }

@@ -7,7 +7,7 @@ import { User } from '../../models/user';
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
-import { AuthProvider } from '../../providers/auth/auth';
+import { DbProvider } from '../../providers/db/db';
 //Pages
 import { ServicePage } from '../../pages/service/service';
 import { LoginPage } from '../../pages/login/login';
@@ -22,39 +22,34 @@ import moment from 'moment';
 export class ServicesPage {
   services: Service[];
   user: User;
-  time: string;
 
   constructor(public navCtrl: NavController, 
       public navParams: NavParams, 
       private serviceProvider: ServiceProvider,
       private miscProvider: MiscProvider,
-      private authProvider: AuthProvider) {
+      private dbProvider: DbProvider) {
       
-    this.time = navParams.data.time;
-    this.validateSession();
+    let time = navParams.data.time;
+    let data = this.getDates(time);
+    
+    this.dbProvider.getUser().then(
+      (val) => { 
+        if (!val) {
+          this.navCtrl.setRoot(LoginPage);
+        } else {
+          this.user = val;
+          this.getServicesByDate(data);
+        }
+      }
+    )
+    .catch((error:any) => {console.log('Error', error);});
   }
 
   ionViewDidLoad() {
     
   }
 
-  getDates(time): any {
-    let data = {
-      startDate: moment().format('YYYY-MM-DD') + ' 00:00',
-      endDate: moment().add(30, 'days').format('YYYY-MM-DD') + ' 23:59',
-    };
-
-    if (time == 'past') {
-      data.startDate = moment().add(-1, 'day').format('YYYY-MM-DD') + ' 00:00';
-      data.endDate = moment().add(-30, 'days').format('YYYY-MM-DD') + ' 23:59';
-    }
-
-    return data;
-  }
-
-  getServicesByDate() {
-    let data = this.getDates(this.time);
-
+  getServicesByDate(data) {
     let loading = this.miscProvider.createLoader('Cargando');
     loading.present();
 
@@ -70,22 +65,18 @@ export class ServicesPage {
     });
   }
 
-  validateSession() {
-    this.authProvider.getSession().then(
-      (val) => { 
-        if (!val) {
-          this.navCtrl.setRoot(LoginPage);
-        } else {
-          this.user = val;
-          this.getServicesByDate();
-        }
-      }
-    )
-    .catch(
-      (error:any) => {
-        console.log('Error', error);
-      }
-    );
+  getDates(time): any {
+    let data = {
+      startDate: moment().format('YYYY-MM-DD') + ' 00:00',
+      endDate: moment().add(30, 'days').format('YYYY-MM-DD') + ' 23:59',
+    };
+
+    if (time == 'past') {
+      data.startDate = moment().add(-1, 'day').format('YYYY-MM-DD') + ' 00:00';
+      data.endDate = moment().add(-30, 'days').format('YYYY-MM-DD') + ' 23:59';
+    }
+
+    return data;
   }
 
   goToService(service) {

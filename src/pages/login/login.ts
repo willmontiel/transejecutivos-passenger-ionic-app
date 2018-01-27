@@ -6,6 +6,7 @@ import { User } from '../../models/user';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MiscProvider } from '../../providers/misc/misc';
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
+import { DbProvider } from '../../providers/db/db';
 //Pages
 import { HomePage } from '../../pages/home/home';
 
@@ -22,7 +23,8 @@ export class LoginPage {
     public navParams: NavParams, 
     private authProvider: AuthProvider,
     private miscProvider: MiscProvider,
-    private apiConfigProvider: ApiConfigProvider) {
+    private apiConfigProvider: ApiConfigProvider,
+    private dbProvider: DbProvider) {
   }
 
   ionViewDidLoad() {
@@ -35,7 +37,7 @@ export class LoginPage {
 
     this.authProvider.login(this.credentials).subscribe(user => {
       this.user = user;
-      this.authProvider.saveSession(this.user);
+      this.dbProvider.saveUser(this.user)
       loading.dismiss();
       this.navCtrl.setRoot(HomePage);
     },

@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { ServicesPage } from '../pages/services/services';
 import { ServicePage } from '../pages/service/service';
 import { LoginPage } from '../pages/login/login';
+import { RequestServicePage } from '../pages/request-service/request-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,13 +20,17 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ApiConfigProvider } from '../providers/api-config/api-config';
 import { DbProvider } from '../providers/db/db';
 
+//Vendors
+import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
+
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     HomePage,
     ServicesPage,
-    ServicePage
+    ServicePage,
+    RequestServicePage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { DbProvider } from '../providers/db/db';
     IonicStorageModule.forRoot({
       name: '__transejecutivosp',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
-    })
+    }),
+    GooglePlacesAutocompleteComponentModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +48,8 @@ import { DbProvider } from '../providers/db/db';
     LoginPage,
     HomePage,
     ServicesPage,
-    ServicePage
+    ServicePage,
+    RequestServicePage
   ],
   providers: [
     StatusBar,
@@ -52,7 +59,7 @@ import { DbProvider } from '../providers/db/db';
     MiscProvider,
     AuthProvider,
     ApiConfigProvider,
-    DbProvider,
+    DbProvider
   ]
 })
 export class AppModule {}
