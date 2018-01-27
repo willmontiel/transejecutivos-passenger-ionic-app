@@ -38,6 +38,10 @@
     color: color($colors, dark-brown);
 }
 
+.orange-fg {
+    color: color($colors, orange);
+}
+
 .all-width {
     width: 100%;
 }
@@ -48,6 +52,10 @@
 
 .h-50 {
     height: 50px;
+}
+
+.h-80 {
+    height: 80px;
 }
 
 .m-5 {
