@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-
+//Providers
+import { ApiConfigProvider } from '../api-config/api-config';
+//Models
 import { Service } from '../../models/service';
+
 
 /*
   Generated class for the ServiceProvider provider.
@@ -13,9 +16,9 @@ import { Service } from '../../models/service';
 */
 @Injectable()
 export class ServiceProvider {
-  urlBase = '';
+  constructor(public http: Http) {
 
-  constructor(public http: Http) {}
+  }
 
   getServicesByDate(startDate: string, endDate: string): Observable<Service[]> {
     /*

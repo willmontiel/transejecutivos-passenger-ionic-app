@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ServicesPage } from '../pages/services/services';
 import { ServicePage } from '../pages/service/service';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,10 +14,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { ServiceProvider } from '../providers/service/service';
 import { MiscProvider } from '../providers/misc/misc';
+import { AuthProvider } from '../providers/auth/auth';
+import { ApiConfigProvider } from '../providers/api-config/api-config';
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     HomePage,
     ServicesPage,
     ServicePage
@@ -29,6 +33,7 @@ import { MiscProvider } from '../providers/misc/misc';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     HomePage,
     ServicesPage,
     ServicePage
@@ -39,6 +44,8 @@ import { MiscProvider } from '../providers/misc/misc';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServiceProvider,
     MiscProvider,
+    AuthProvider,
+    ApiConfigProvider,
   ]
 })
 export class AppModule {}

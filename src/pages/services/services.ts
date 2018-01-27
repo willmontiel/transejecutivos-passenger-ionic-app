@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 //Models
 import { Service } from '../../models/service';
@@ -21,9 +21,7 @@ export class ServicesPage {
   constructor(public navCtrl: NavController, 
       public navParams: NavParams, 
       private serviceProvider: ServiceProvider,
-      private miscProvider: MiscProvider,
-      public loadingCtrl: LoadingController,
-      private alertCtrl: AlertController) {
+      private miscProvider: MiscProvider) {
       
     let loading = miscProvider.createLoader('Cargando');
 
@@ -37,7 +35,7 @@ export class ServicesPage {
         loading.dismiss();
         let alert = miscProvider.createAlert("Error", err, ['Close']);
         alert.present();
-    })
+    });
   }
 
   ionViewDidLoad() {
