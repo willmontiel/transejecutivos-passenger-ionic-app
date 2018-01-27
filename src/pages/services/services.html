@@ -36,39 +36,49 @@
  
           <!-- Direct Add Button as Fallback -->
           <ion-card *ngIf="!child.children">
-            <ion-card-header class="dark-fg">
+            <ion-card-header>
               {{ child?.code }}
             </ion-card-header>
             <ion-card-content>
               <ion-row>
                 <ion-col col-6>
-                  <ion-icon name="calendar" color="dark"></ion-icon> {{ child?.niceStartDate }}
+                  <ion-icon name="calendar" color="dark"></ion-icon> 
+                  {{ child?.niceStartDate }}
                 </ion-col>
                 <ion-col col-6 class="text-right">
-                    <ion-icon name="time" color="dark"></ion-icon> {{ child?.niceStartTime }}
+                    <ion-icon name="time" color="dark"></ion-icon> 
+                    {{ child?.niceStartTime }}
                 </ion-col>
               </ion-row>
               
               <ion-row>
                 <ion-col col-12>
                   <div *ngIf="child?.passengers && child?.passengers.length">
-                    {{ child?.passengers[0]?.source?.city?.name }} {{ child?.passengers[0]?.source?.address }}
+                    <ion-item no-padding text-wrap class="secondary-fg">
+                      {{ child?.passengers[0]?.source?.city?.name }} {{ child?.passengers[0]?.source?.address }}
+                    </ion-item>
                   </div>
                   <div *ngIf="!child?.passengers || !child?.passengers.length">
-                    No disponible
+                    <ion-item no-padding text-wrap class="secondary-fg">
+                      No disponible
+                    </ion-item>
                   </div>
                 </ion-col>
               </ion-row>
 
               <ion-row>
                 <ion-col col-12>
-                  {{ child?.destiny?.city?.name }} {{ child?.destiny?.address }} 
+                  <ion-item no-padding text-wrap class="success-fg">
+                    {{ child?.destiny?.city?.name }} {{ child?.destiny?.address }} 
+                  </ion-item>
                 </ion-col>
               </ion-row>
 
               <ion-row class="bt">
                 <ion-col col-12>
-                  {{ child?.destiny?.city?.name }} {{ child?.destiny?.address }} 
+                  <ion-item no-padding text-wrap>
+                    {{ child?.driver?.name }} {{ child?.driver?.lastname }} 
+                  </ion-item>
                 </ion-col>
               </ion-row>
             </ion-card-content>

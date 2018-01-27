@@ -4,6 +4,7 @@ import { Company } from './company';
 import { Subcompany } from './subcompany';
 import { ServiceLocation } from './service-location';
 import { Passenger } from './passenger';
+import { Driver } from './driver';
 
 export interface Service {
     idService: number;
@@ -23,5 +24,6 @@ export interface Service {
     company: Company;
     subcompany: Subcompany;
     destiny: ServiceLocation;
+    driver: Driver;
     passengers: Passenger[];
 }

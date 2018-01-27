@@ -6,7 +6,6 @@ export interface Passenger {
     idPassenger: number;
     name: string;
     lastname: string;
-    longitude: string;
     source: ServiceLocation;
     costCenter: CostCenter;
 }
