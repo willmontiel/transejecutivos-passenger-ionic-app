@@ -1,7 +1,7 @@
 {
     "data": [
         {
-            "name": "2018-01-26",
+            "name": "Enero 26/2018",
             "children": [
                 {
                     "idService": "1468",
@@ -18,6 +18,8 @@
                     "startDate": "2018-01-26 01:30:00",
                     "notifiedPassenger": "0",
                     "date": "2018-01-26",
+                    "niceStartDate": "Enero 26/2018",
+                    "niceStartTime": "01:30",
                     "time": "01:30:00",
                     "startYear": "2018",
                     "startMonth": "01",
@@ -9567,7 +9569,7 @@
             ]
         },
         {
-            "name": "2018-01-27",
+            "name": "Enero 27/2018",
             "children": [
                 {
                     "idService": "2440",
@@ -12102,7 +12104,7 @@
             ]
         },
         {
-            "name": "2018-01-29",
+            "name": "Enero 29/2018",
             "children": [
                 {
                     "idService": "2513",

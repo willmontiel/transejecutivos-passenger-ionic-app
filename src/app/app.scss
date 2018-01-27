@@ -14,8 +14,24 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
-.bg-transparent {
+.transparent-bg {
     background-color: transparent !important;
+}
+
+.primary-fg {
+    color: color($colors, primary);
+}
+
+.secondary-fg {
+    color: color($colors, secondary);
+}
+
+.dark-fg {
+    color: color($colors, dark);
+}
+
+.success-fg {
+    color: color($colors, success);
 }
 
 .all-width {
@@ -48,4 +64,28 @@
 
 .ml-5 {
     margin-left: 5px !important;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bt {
+    border-top: 1px solid color($colors, secondary);
 }
