@@ -14,10 +14,10 @@
 
 </ion-header>
 
-<ion-content no-padding>
+<ion-content overflow-scroll="false" no-padding>
   <ion-list [virtualScroll]="services" no-padding>
     <ion-item *virtualItem="let service" no-padding>
-      <ion-card class="cards-list-demo" *ngIf="!service.serviceren" (click)="goToService(service)">
+      <ion-card class="cards-list-demo" (click)="goToService(service)">
         <ion-card-header class="pl-15 pr-15 pt-5 pb-5">
           <ion-row>
             <ion-col col-6>

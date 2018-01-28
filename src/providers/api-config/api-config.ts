@@ -10,7 +10,7 @@ export class ApiConfigProvider {
   login: string = "session/apilogin";
   searchCarType: string = "cartype/searchcartype";
   getCarTypes: string = "cartype/getall";
-  getServicesByDate: string = "service/getservicesbydate";
+  getServicesByDate: string = "getservicesbydate";
 
   constructor() {}
 

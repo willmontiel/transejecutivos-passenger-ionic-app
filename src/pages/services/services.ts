@@ -29,20 +29,7 @@ export class ServicesPage {
       private miscProvider: MiscProvider,
       private dbProvider: DbProvider) {
       
-    let time = navParams.data.time;
-    let data = this.getDates(time);
-    
-    this.dbProvider.getUser().then(
-      (val) => { 
-        if (!val) {
-          this.navCtrl.setRoot(LoginPage);
-        } else {
-          this.user = val;
-          this.getServicesByDate(data);
-        }
-      }
-    )
-    .catch((error:any) => {console.log('Error', error);});
+    this.getServicesByDate(this.getDates(navParams.data.time));
   }
 
   ionViewDidLoad() {
@@ -53,9 +40,13 @@ export class ServicesPage {
     let loading = this.miscProvider.createLoader('Cargando');
     loading.present();
 
-    this.serviceProvider.getServicesByDate(data, this.user).subscribe(services => {
+    this.serviceProvider.getServicesByDate(data).subscribe(services => {
       this.services = services;
       loading.dismiss();
+      if (!this.services.length) {
+        let alert = this.miscProvider.createAlert("Atención", "No se encontraron servicios.", ['Cerrar']);
+        alert.present();
+      }
     },
     err => {
         console.log(err);
@@ -72,8 +63,8 @@ export class ServicesPage {
     };
 
     if (time == 'past') {
-      data.startDate = moment().add(-1, 'day').format('YYYY-MM-DD') + ' 00:00';
-      data.endDate = moment().add(-30, 'days').format('YYYY-MM-DD') + ' 23:59';
+      data.endDate = moment().add(-1, 'day').format('YYYY-MM-DD') + ' 00:00';
+      data.startDate = moment().add(-30, 'days').format('YYYY-MM-DD') + ' 23:59';
     }
 
     return data;

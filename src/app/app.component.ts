@@ -28,9 +28,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.validateSession();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.validateSession();
     });
   }
 
@@ -43,7 +43,6 @@ export class MyApp {
   private validateSession() {
     this.dbProvider.getUser().then(
       (val) => { 
-        console.log(val);
         if (!val) {
           this.rootPage = LoginPage;
         } else {

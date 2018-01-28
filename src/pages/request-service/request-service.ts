@@ -36,8 +36,7 @@ export class RequestServicePage {
     this.loading.present();
 
     this.dbProvider.getUser().then(
-      (val) => { 
-        console.log("user", val);
+      (val) => {
         if (val) {
           this.user = val;
           this.getCarTypes();
