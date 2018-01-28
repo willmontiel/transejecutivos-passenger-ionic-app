@@ -48,7 +48,7 @@ export class MyApp {
         this.rootPage = LoginPage;
       } else {
         this.rootPage = HomePage;
-        this.globalProvider.setUser(user);
+        this.globalProvider.setUser(JSON.parse(user));
       }
     });
   }

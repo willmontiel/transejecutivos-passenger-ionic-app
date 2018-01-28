@@ -66,9 +66,9 @@ export class HomePage {
 
   goToPage(page) {
     if (page == 'ServicesPage') {
-      this.navCtrl.push(ServicesPage, { time: 'present' });
+      this.navCtrl.push(ServicesPage, {time: 'present', title: 'Lista de reservas'});
     } else if (page == 'OlderServicesPage') {
-      this.navCtrl.push(ServicesPage, { time: 'past' });
+      this.navCtrl.push(ServicesPage, { time: 'past',  title: 'Reservas anteriores'});
     } else if (page == 'RequestServicePage') {
       this.navCtrl.push(RequestServicePage);
     } else if (page == 'Logout') {

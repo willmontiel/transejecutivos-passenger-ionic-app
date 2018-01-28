@@ -22,6 +22,7 @@ import moment from 'moment';
 export class ServicesPage {
   services: Service[];
   user: User;
+  title: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -29,8 +30,8 @@ export class ServicesPage {
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider) {
 
+    this.title = navParams.data.title;
     this.user = globalProvider.getUser();
-    console.log("User", this.user);
     this.getServicesByDate(this.getDates(navParams.data.time));
   }
 
@@ -50,9 +51,9 @@ export class ServicesPage {
         alert.present();
       }
     }, err => {
-        loading.dismiss();
-        let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
-        alert.present();
+      loading.dismiss();
+      let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
+      alert.present();
     });
   }
 

@@ -23,9 +23,9 @@ export class ServiceProvider {
   }
 
   getServicesByDate(data: any, user: User): Observable<Service[]> {
-
     this.headers = new Headers();
     this.headers.append('Authorization', user.api_key);
+    this.headers.append('Content-Type', 'application/json')
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, options)
