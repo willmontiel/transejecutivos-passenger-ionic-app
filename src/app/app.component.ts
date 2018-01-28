@@ -15,7 +15,7 @@ import { DbProvider } from '../providers/db/db';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = RequestServicePage;
+  rootPage: any = HomePage;
 
   constructor(public platform: Platform, 
     public statusBar: StatusBar,
@@ -30,7 +30,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.validateSession();
+      this.validateSession();
     });
   }
 

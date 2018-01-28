@@ -19,29 +19,30 @@ import { CarType } from '../../models/car-type';
 */
 @Injectable()
 export class ServiceProvider {
+
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+
   constructor(public http: Http,
     private apiConfigProvider: ApiConfigProvider,
     private dbProvider: DbProvider) {
-
   }
 
   getServicesByDate(data: any, user: User): Observable<Service[]> {
     let headers = new Headers();
     
-    headers.append('Authorization', user.api_key);
+    headers.append('authorization', user.api_key);
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, { headers: headers })
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, options)
       .map(res => <Service[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 
   getCarTypes(user: User): Observable<CarType[]> {
-    let headers = new Headers({
-      'Authorization': user.api_key,
-    });
-
-    let options = new RequestOptions({ headers: headers });
+    this.headers.append('authorization', user.api_key);
+    let options = new RequestOptions({ headers: this.headers });
 
     return this.http.get(this.apiConfigProvider.get().getCarTypes, options)
       .map(res => <Service[]>res.json().data)
