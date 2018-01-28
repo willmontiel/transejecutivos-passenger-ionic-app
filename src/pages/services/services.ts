@@ -7,10 +7,10 @@ import { User } from '../../models/user';
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
-import { DbProvider } from '../../providers/db/db';
 //Pages
 import { ServicePage } from '../../pages/service/service';
 import { LoginPage } from '../../pages/login/login';
+import { GlobalProvider } from '../../providers/global/global';
 //Vendors
 import moment from 'moment';
 
@@ -23,33 +23,33 @@ export class ServicesPage {
   services: Service[];
   user: User;
 
-  constructor(public navCtrl: NavController, 
-      public navParams: NavParams, 
-      private serviceProvider: ServiceProvider,
-      private miscProvider: MiscProvider,
-      private dbProvider: DbProvider) {
-      
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private serviceProvider: ServiceProvider,
+    private miscProvider: MiscProvider,
+    private globalProvider: GlobalProvider) {
+
+    this.user = globalProvider.getUser();
+    console.log("User", this.user);
     this.getServicesByDate(this.getDates(navParams.data.time));
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   getServicesByDate(data) {
     let loading = this.miscProvider.createLoader('Cargando');
     loading.present();
 
-    this.serviceProvider.getServicesByDate(data).subscribe(services => {
+    this.serviceProvider.getServicesByDate(data, this.user).subscribe(services => {
       this.services = services;
       loading.dismiss();
       if (!this.services.length) {
         let alert = this.miscProvider.createAlert("Atención", "No se encontraron servicios.", ['Cerrar']);
         alert.present();
       }
-    },
-    err => {
-        console.log(err);
+    }, err => {
         loading.dismiss();
         let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
         alert.present();

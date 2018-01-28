@@ -6,7 +6,6 @@ import { Platform } from 'ionic-angular';
 
 //Providers
 import { DbProvider } from '../../providers/db/db';
-import { GlobalProvider } from '../../providers/global/global';
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -16,13 +15,9 @@ import { LoginPage } from '../login/login';
 export class HomePage {
   pages = [];
 
-  constructor(public navCtrl: NavController, 
-      private platform: Platform, 
-      private globalProvider: GlobalProvider,
-      private dbProvider: DbProvider) {
-    
-    console.log("Global ", globalProvider.getUser);
-
+  constructor(public navCtrl: NavController,
+    private platform: Platform,
+    private dbProvider: DbProvider) {
     this.pages = [
       {
         'title': 'Mis reservas',
@@ -68,12 +63,12 @@ export class HomePage {
       },
     ]
   }
-  
+
   goToPage(page) {
     if (page == 'ServicesPage') {
-      this.navCtrl.push(ServicesPage, {time: 'present'});
+      this.navCtrl.push(ServicesPage, { time: 'present' });
     } else if (page == 'OlderServicesPage') {
-      this.navCtrl.push(ServicesPage, {time: 'past'});
+      this.navCtrl.push(ServicesPage, { time: 'past' });
     } else if (page == 'RequestServicePage') {
       this.navCtrl.push(RequestServicePage);
     } else if (page == 'Logout') {
@@ -84,7 +79,7 @@ export class HomePage {
   }
 
   logout() {
-    this.dbProvider.removeUser().then(() => { 
+    this.dbProvider.removeUser().then(() => {
       this.navCtrl.push(LoginPage);
     });
   }

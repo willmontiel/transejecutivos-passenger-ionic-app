@@ -22,10 +22,10 @@ export class ServiceProvider {
     private storage: Storage) {
   }
 
-  getServicesByDate(data: any): Observable<Service[]> {
+  getServicesByDate(data: any, user: User): Observable<Service[]> {
+
     this.headers = new Headers();
-    this.headers.append('Authorization', '744e9ba2df6ceff78d97a60b6ef6627976832c2e');
-    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authorization', user.api_key);
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, options)
