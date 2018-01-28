@@ -37,12 +37,12 @@ export class LoginPage {
 
     this.authProvider.login(this.credentials).subscribe(user => {
       this.user = user;
-      this.dbProvider.saveUser(this.user)
-      loading.dismiss();
-      this.navCtrl.setRoot(HomePage);
+      this.dbProvider.saveUser(this.user).then(() => {
+        loading.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      });
     },
     err => {
-        console.log(err);
         loading.dismiss();
         let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
         alert.present();

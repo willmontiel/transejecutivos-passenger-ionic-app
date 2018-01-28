@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { RequestServicePage } from '../pages/request-service/request-service';
 //Providers
 import { DbProvider } from '../providers/db/db';
+import { GlobalProvider } from '../providers/global/global';
 
 @Component({
   templateUrl: 'app.html'
@@ -20,7 +21,8 @@ export class MyApp {
   constructor(public platform: Platform, 
     public statusBar: StatusBar,
     public splashScreen: SplashScreen, 
-    public dbProvider: DbProvider) {
+    public dbProvider: DbProvider,
+    public globalProvider: GlobalProvider) {
     this.initializeApp();
   }
 
@@ -28,9 +30,9 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.validateSession();
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.validateSession();
     });
   }
 
@@ -41,14 +43,13 @@ export class MyApp {
   }
 
   private validateSession() {
-    this.dbProvider.getUser().then(
-      (val) => { 
-        if (!val) {
-          this.rootPage = LoginPage;
-        } else {
-          this.rootPage = HomePage;
-        }
+    this.dbProvider.getUser().then((user) => { 
+      if (!user) {
+        this.rootPage = LoginPage;
+      } else {
+        this.rootPage = HomePage;
+        this.globalProvider.setUser(user);
       }
-    ).catch((error:any) => { console.log('Error', error); });
+    });
   }
 }

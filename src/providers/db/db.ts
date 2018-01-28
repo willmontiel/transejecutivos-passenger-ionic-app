@@ -12,7 +12,7 @@ export class DbProvider {
   }
 
   saveUser(user: User) {
-    this.storage.set('user', JSON.stringify(user));
+    return this.storage.set('user', JSON.stringify(user));
   }
 
   removeUser() {
@@ -20,10 +20,6 @@ export class DbProvider {
   }
 
   getUser() {
-    return this.storage.get('user')
-      .then(data => {
-        return Promise.resolve(JSON.parse(data))
-      })
-      .catch(error => Promise.reject(error));
+    return this.storage.get('user');
   }
 }

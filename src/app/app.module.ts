@@ -22,6 +22,7 @@ import { DbProvider } from '../providers/db/db';
 
 //Vendors
 import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
+import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-au
     MiscProvider,
     AuthProvider,
     ApiConfigProvider,
-    DbProvider
+    DbProvider,
+    GlobalProvider
   ]
 })
 export class AppModule {}
