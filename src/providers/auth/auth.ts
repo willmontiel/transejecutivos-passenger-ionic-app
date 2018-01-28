@@ -21,12 +21,15 @@ export class AuthProvider {
       return Observable.throw("Por favor digite su correo y la contraseña.");
     }
 
+    console.log("URL ", this.apiConfigProvider.get().login);
+    console.log("credentials ", JSON.stringify(credentials));
+
     return this.http.post(this.apiConfigProvider.get().login, credentials)
       .map(
         res => <User>res.json()
       )
       .catch(
-        (error:any) => Observable.throw(error.json().message || 'Server error')
+        (error:any) => Observable.throw(error.json().message || console.log(JSON.stringify(error)) + 'Server error')
       );
   }
 }

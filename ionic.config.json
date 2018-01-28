@@ -1,8 +1,14 @@
 {
-  "name": "transejecutivos-passenger-ionic-app",
+  "name": "Transportes Ejecutivos",
   "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://app.transportesejecutivos.com"
+    }
+  ]
 }
