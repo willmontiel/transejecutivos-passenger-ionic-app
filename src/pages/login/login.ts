@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
 //Models
 import { User } from '../../models/user';
 //Providers
@@ -27,6 +27,7 @@ export class LoginPage {
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider,
     private apiConfigProvider: ApiConfigProvider,
+    public loadingCtrl: LoadingController,
     private dbProvider: DbProvider) {
   }
 
@@ -35,7 +36,10 @@ export class LoginPage {
   }
   
   public login() {
-    let loading = this.miscProvider.createLoader('Cargando');
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando',
+      dismissOnPageChange: true
+    });
     loading.present();
 
     this.authProvider.login(this.credentials).subscribe(user => {

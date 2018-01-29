@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
 
 //Models
 import { Service } from '../../models/service';
@@ -25,6 +25,7 @@ export class ServicesPage {
   title: string;
 
   constructor(public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
     public navParams: NavParams,
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
@@ -40,7 +41,10 @@ export class ServicesPage {
   }
 
   getServicesByDate(data) {
-    let loading = this.miscProvider.createLoader('Cargando');
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando',
+      dismissOnPageChange: true
+    });
     loading.present();
 
     this.serviceProvider.getServicesByDate(data, this.user).subscribe(services => {

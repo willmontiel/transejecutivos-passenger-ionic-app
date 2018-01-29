@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { LoadingController, IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 //Models
 import { User } from '../../models/user';
 import { Service } from '../../models/service';
@@ -37,6 +37,7 @@ export class RequestServicePage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
+    public loadingCtrl: LoadingController,
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider,
@@ -54,8 +55,12 @@ export class RequestServicePage {
   }
 
   getCarTypes() {
-    let loading = this.miscProvider.createLoader('Cargando');
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando',
+      dismissOnPageChange: true
+    });
     loading.present();
+
     this.serviceProvider.getCarTypes(this.user).subscribe(carTypes => {
       this.carTypes = carTypes;
       loading.dismiss();
@@ -67,7 +72,10 @@ export class RequestServicePage {
   }
 
   getAerolines() {
-    let loading = this.miscProvider.createLoader('Cargando');
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando',
+      dismissOnPageChange: true
+    });
     loading.present();
 
     this.serviceProvider.getAerolines(this.user).subscribe(aeroline => {
@@ -81,7 +89,10 @@ export class RequestServicePage {
   }
 
   requestService() {
-    let loading = this.miscProvider.createLoader('Cargando...');
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando',
+      dismissOnPageChange: true
+    });
     loading.present();
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {

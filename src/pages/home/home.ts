@@ -37,6 +37,7 @@ export class HomePage {
         'color': 'primary',
         'page': 'RequestServicePage'
       },
+      /*
       {
         'title': 'Buscar servicio',
         'icon': 'search',
@@ -49,6 +50,7 @@ export class HomePage {
         'color': 'dark-brown',
         'page': 'CallUs'
       },
+      */
       {
         'title': 'Cerrar sesión',
         'icon': 'close-circle',
