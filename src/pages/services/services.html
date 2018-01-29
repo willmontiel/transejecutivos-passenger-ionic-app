@@ -70,8 +70,8 @@
 
             <ion-col col-3>
               <ion-item no-padding text-wrap class="text-right">
-                <ion-icon name="text" color="secondary" class=""></ion-icon>
-                <ion-icon name="call" color="danger" class="pl-5"></ion-icon>
+                <ion-icon name="text" color="secondary" class="" (click)="sendSMSToDriver(service)"></ion-icon>
+                <ion-icon name="call" color="danger" class="pl-5" (click)="callDriver(service)"></ion-icon>
               </ion-item>
             </ion-col>
           </ion-row>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the MiscProvider provider.
@@ -10,20 +10,30 @@ import {LoadingController, AlertController } from 'ionic-angular';
 @Injectable()
 export class MiscProvider {
 
-  constructor(public loadingCtrl: LoadingController, private alertCtrl: AlertController) {}
+  constructor(public loadingCtrl: LoadingController, private alertCtrl: AlertController) { }
 
-  createLoader(msg: string = "Please wait...") : any { 
+  createLoader(msg: string = "Please wait..."): any {
     return this.loadingCtrl.create({
       content: msg,
       dismissOnPageChange: true
     });
   }
 
-  createAlert(title: string = "Error", subTitle: string = "Error...", buttons: Array<any>) : any {
+  createAlert(title: string = "Error", subTitle: string = "Error...", buttons: Array<any>): any {
     return this.alertCtrl.create({
       title: title,
       subTitle: subTitle,
       buttons: buttons
     });
+  }
+
+  isValidMobile(number: string): any {
+    let regExp = /^[0-9]{10}$/;
+
+    if (!regExp.test(number)) {
+      return false;
+    }
+
+    return true;
   }
 }

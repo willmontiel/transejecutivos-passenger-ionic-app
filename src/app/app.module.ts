@@ -23,6 +23,8 @@ import { DbProvider } from '../providers/db/db';
 
 //Vendors
 import { GlobalProvider } from '../providers/global/global';
+import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { GlobalProvider } from '../providers/global/global';
     AuthProvider,
     ApiConfigProvider,
     DbProvider,
-    GlobalProvider
+    GlobalProvider,
+    CallNumber,
+    SMS
   ]
 })
 export class AppModule {}

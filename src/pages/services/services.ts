@@ -13,6 +13,8 @@ import { LoginPage } from '../../pages/login/login';
 import { GlobalProvider } from '../../providers/global/global';
 //Vendors
 import moment from 'moment';
+import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms';
 
 @IonicPage()
 @Component({
@@ -29,7 +31,9 @@ export class ServicesPage {
     public navParams: NavParams,
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
-    private globalProvider: GlobalProvider) {
+    private globalProvider: GlobalProvider,
+    private callNumber: CallNumber,
+    private sms: SMS) {
 
     this.title = navParams.data.title;
     this.user = globalProvider.getUser();
@@ -79,4 +83,23 @@ export class ServicesPage {
     this.navCtrl.push(ServicePage, { service: service });
   }
 
+  callDriver(service) {
+    if (service.driver.phone1 && this.miscProvider.isValidMobile(service.driver.phone1)) {
+      this.callNumber.callNumber(service.driver.phone1, true)
+        .then(() => console.log('Launched dialer!'))
+        .catch(() => console.log('Error launching dialer'));
+    } else if (service.driver.phone2 && this.miscProvider.isValidMobile(service.driver.phone2)) {
+      this.callNumber.callNumber(service.driver.phone2, true)
+        .then(() => console.log('Launched dialer!'))
+        .catch(() => console.log('Error launching dialer'));
+    }
+  }
+
+  sendSMSToDriver(service) {
+    if (service.driver.phone1 && this.miscProvider.isValidMobile(service.driver.phone1)) {
+      this.sms.send(service.driver.phone1, '');
+    } else if (service.driver.phone2 && this.miscProvider.isValidMobile(service.driver.phone2)) {
+      this.sms.send(service.driver.phone2, '');
+    }
+  }
 }
