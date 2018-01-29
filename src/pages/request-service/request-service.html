@@ -29,13 +29,13 @@
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Inicio</ion-label>
-            <ion-input (click)="showAddressModal()" [(ngModel)]="data.source" type="text" placeholder="Pick an address"></ion-input>
+            <ion-label floating>Dirección de inicio</ion-label>
+            <ion-input name="source" (click)="showAddressModal('source')" [(ngModel)]="data.source" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Fin</ion-label>
-            
+            <ion-label floating>Dirección de fin</ion-label>
+            <ion-input name="destiny" (click)="showAddressModal('destiny')" [(ngModel)]="data.destiny" type="text"></ion-input>
           </ion-item>
 
           <ion-item>

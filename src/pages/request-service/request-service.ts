@@ -10,6 +10,9 @@ import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
 import { GlobalProvider } from '../../providers/global/global';
 import moment from 'moment';
+//Pages
+import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
+
 
 @IonicPage()
 @Component({
@@ -17,7 +20,6 @@ import moment from 'moment';
   templateUrl: 'request-service.html',
 })
 export class RequestServicePage {
-
   data: any = {
     date: '',
     time: ''
@@ -95,20 +97,16 @@ export class RequestServicePage {
     });
   }
 
-  showAddressModal () {
-    let modal = this.modalCtrl.create(AutocompletePage);
+  showAddressModal (type) {
+    let modal = this.modalCtrl.create(AutoCompletePage);
     let me = this;
     modal.onDidDismiss(data => {
-      this.address.place = data;
+      if (type == 'source') {
+        this.data.source = data;
+      } else if (type == 'destiny') {
+        this.data.destiny = data;
+      }
     });
     modal.present();
-  }
-
-  setDestiny(data: any) {
-    console.log(data);
-    this.data.destiny = {
-      address: data.description,
-      place_id: data.place_id,
-    };
   }
 }
