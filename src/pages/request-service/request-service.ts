@@ -12,6 +12,7 @@ import { GlobalProvider } from '../../providers/global/global';
 import moment from 'moment';
 //Pages
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
+import { ServicePage } from '../../pages/service/service';
 
 
 @IonicPage()
@@ -22,7 +23,9 @@ import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 export class RequestServicePage {
   data: any = {
     date: '',
-    time: ''
+    time: '',
+    passengers: 1,
+    idAeroline: null
   };
 
   user: User;
@@ -78,7 +81,6 @@ export class RequestServicePage {
   }
 
   requestService() {
-    console.log("Data", this.data);
     let loading = this.miscProvider.createLoader('Cargando...');
     loading.present();
 
@@ -87,9 +89,8 @@ export class RequestServicePage {
       loading.dismiss();
       
       if (service.idService) {
-
+        this.navCtrl.push(ServicePage, { service: service });
       }
-
     }, err => {
       loading.dismiss();
       let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
@@ -102,9 +103,17 @@ export class RequestServicePage {
     let me = this;
     modal.onDidDismiss(data => {
       if (type == 'source') {
-        this.data.source = data;
+        this.data.startAddress = data.description;
+        this.data.source = {
+          address: data.description,
+          place_id: data.place_id,
+        };
       } else if (type == 'destiny') {
-        this.data.destiny = data;
+        this.data.endAddress = data.description;
+        this.data.destiny = {
+          address: data.description,
+          place_id: data.place_id,
+        };
       }
     });
     modal.present();

@@ -1,14 +1,13 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-title>Escribe la dirección</ion-title>
-    <ion-searchbar [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+    <ion-searchbar placeholder="Escribe la dirección" [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list *ngIf="autocompleteItems.length">
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
-      {{ item }}
+      {{ item.description }}
     </ion-item>
   </ion-list>
 </ion-content>

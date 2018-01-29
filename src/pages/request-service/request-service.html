@@ -30,12 +30,17 @@
 
           <ion-item>
             <ion-label floating>Dirección de inicio</ion-label>
-            <ion-input name="source" (click)="showAddressModal('source')" [(ngModel)]="data.source" type="text"></ion-input>
+            <ion-input name="startAddress" (click)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Dirección de fin</ion-label>
-            <ion-input name="destiny" (click)="showAddressModal('destiny')" [(ngModel)]="data.destiny" type="text"></ion-input>
+            <ion-input name="endAddress" (click)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Cantidad de pasajeros</ion-label>
+            <ion-input name="passengers" min="1" type="number" [(ngModel)]="data.passengers" required></ion-input>
           </ion-item>
 
           <ion-item>
