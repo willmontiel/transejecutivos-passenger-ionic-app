@@ -13,28 +13,62 @@
 
 <ion-content padding>
   <form (ngSubmit)="requestService()" #requestServiceForm="ngForm">
-    <ion-list>
-      <ion-item>
-        <ion-label>Fecha</ion-label>
-        <ion-datetime name="date" displayFormat="YYYY-MMM-DD" pickerFormat="YYYY-MMM-DD" [(ngModel)]="data.date"></ion-datetime>
-      </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Fecha</ion-label>
+            <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="date" displayFormat="DD MMM/YYYY" pickerFormat="YYYY-MM-DD" [(ngModel)]="data.date"
+              required></ion-datetime>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Hora</ion-label>
-        <ion-datetime name="time" displayFormat="hh:mm" pickerFormat="hh:mm" [(ngModel)]="data.time"></ion-datetime>
-      </ion-item>
+          <ion-item>
+            <ion-label floating>Hora</ion-label>
+            <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="time" displayFormat="hh:mm" pickerFormat="hh:mm" [(ngModel)]="data.time"
+              required></ion-datetime>
+          </ion-item>
 
-      <ion-item>
-        <google-places-autocomplete (callback)="setSource($event[0])" key="AIzaSyD6B-5HTA4p7x9bsuP39so3lXfDOqreLXw"></google-places-autocomplete>
-      </ion-item>
+          <ion-item>
+            <ion-label floating>Inicio</ion-label>
+            <ion-input (click)="showAddressModal()" [(ngModel)]="data.source" type="text" placeholder="Pick an address"></ion-input>
+          </ion-item>
 
-      <ion-item>
-        <google-places-autocomplete (callback)="setDestiny($event[0])" key="AIzaSyD6B-5HTA4p7x9bsuP39so3lXfDOqreLXw"></google-places-autocomplete>
-      </ion-item>
+          <ion-item>
+            <ion-label floating>Fin</ion-label>
+            
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Tipo de vehículo</ion-label>
-      </ion-item>
-    </ion-list>
+          <ion-item>
+            <ion-label floating>Tipo de vehículo</ion-label>
+            <ion-select name="idCarType" [(ngModel)]="data.idCarType" okText="Aceptar" cancelText="Cerrar" required>
+              <ion-option value="{{carType.idCarType}}" *ngFor="let carType of carTypes">{{ carType.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Aerolínea</ion-label>
+            <ion-select name="idAeroline" [(ngModel)]="data.idAeroline" okText="Aceptar" cancelText="Cerrar">
+              <ion-option value="{{aeroline.idAeroline}}" *ngFor="let aeroline of aerolines">{{ aeroline.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item *ngIf="data.idAeroline">
+            <ion-label floating>Código de la aerolínea</ion-label>
+            <ion-input autocomplete name="flyCode" type="text" [(ngModel)]="data.flyCode" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Observaciones (Opcional)</ion-label>
+            <ion-textarea placeholder="" name="observations" [(ngModel)]="data.observations"></ion-textarea>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button color="secondary" full type="submit" [disabled]="!requestServiceForm.form.valid">Solicitar</button>
+      </ion-col>
+    </ion-row>
   </form>
 </ion-content>

@@ -10,7 +10,9 @@ export class ApiConfigProvider {
   login: string = "session/apilogin";
   searchCarType: string = "cartype/searchcartype";
   getCarTypes: string = "cartype/getall";
+  getAerolines: string = "aeroline/getall";
   getServicesByDate: string = "getservicesbydate";
+  requestService: string = "requestservice";
 
   constructor() {}
 
@@ -20,6 +22,8 @@ export class ApiConfigProvider {
       getServicesByDate: URL_BASE + "/" + API_BASE + "/" + API_V1 + "/" + this.getServicesByDate,
       searchCarType: URL_BASE + "/" + this.searchCarType,
       getCarTypes: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.getCarTypes,
+      getAerolines: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.getAerolines,
+      requestService: URL_BASE + "/" + API_BASE + "/" + API_V1 + "/" + this.requestService,
     }
   }
 

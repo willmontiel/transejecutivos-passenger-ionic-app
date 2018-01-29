@@ -10,6 +10,7 @@ import { DbProvider } from '../db/db';
 import { Service } from '../../models/service';
 import { User } from '../../models/user';
 import { CarType } from '../../models/car-type';
+import { Aeroline } from '../../models/aeroline';
 
 @Injectable()
 export class ServiceProvider {
@@ -40,6 +41,27 @@ export class ServiceProvider {
 
     return this.http.get(this.apiConfigProvider.get().getCarTypes, options)
       .map(res => <Service[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
+  getAerolines(user: User): Observable<Aeroline[]> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.get(this.apiConfigProvider.get().getAerolines, options)
+      .map(res => <Aeroline[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
+  requestService(data: any, user: User): Observable<Service> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    this.headers.append('Content-Type', 'application/json')
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.post(this.apiConfigProvider.get().requestService, data, options)
+      .map(res => <Service>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 }

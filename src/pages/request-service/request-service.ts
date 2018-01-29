@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 //Models
 import { User } from '../../models/user';
+import { Service } from '../../models/service';
 import { CarType } from '../../models/car-type';
+import { Aeroline } from '../../models/aeroline';
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
-import { DbProvider } from '../../providers/db/db';
-//Vendors
-import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
+import { GlobalProvider } from '../../providers/global/global';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -23,28 +24,24 @@ export class RequestServicePage {
   };
 
   user: User;
+  service: Service;
   carTypes: CarType[];
+  aerolines: Aeroline[];
   loading: any;
+  minDate: string;
 
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
-    private dbProvider: DbProvider) {
-      
-    this.loading = this.miscProvider.createLoader('Cargando');
-    this.loading.present();
+    private globalProvider: GlobalProvider,
+    private modalCtrl: ModalController) {
 
-    this.dbProvider.getUser().then(
-      (val) => {
-        if (val) {
-          this.user = val;
-          this.getCarTypes();
-        } 
-        
-      }
-    )
-    .catch((error:any) => {console.log('Error', error);});
+    this.user = globalProvider.getUser();
+    this.getCarTypes();
+    this.getAerolines();
+
+    this.minDate = moment().format('YYYY-MM-DD');
   }
 
   ionViewDidLoad() {
@@ -52,28 +49,66 @@ export class RequestServicePage {
   }
 
   getCarTypes() {
+    let loading = this.miscProvider.createLoader('Cargando');
+    loading.present();
     this.serviceProvider.getCarTypes(this.user).subscribe(carTypes => {
       this.carTypes = carTypes;
-      console.log(this.carTypes);
-      this.loading.dismiss();
-    },
-    err => {
-        console.log(err);
-        this.loading.dismiss();
-        let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
-        alert.present();
+      loading.dismiss();
+    }, err => {
+      loading.dismiss();
+      let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
+      alert.present();
+    });
+  }
+
+  getAerolines() {
+    let loading = this.miscProvider.createLoader('Cargando');
+    loading.present();
+
+    this.serviceProvider.getAerolines(this.user).subscribe(aeroline => {
+      this.aerolines = aeroline;
+      loading.dismiss();
+    }, err => {
+      loading.dismiss();
+      let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
+      alert.present();
     });
   }
 
   requestService() {
+    console.log("Data", this.data);
+    let loading = this.miscProvider.createLoader('Cargando...');
+    loading.present();
 
+    this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
+      this.service = service;
+      loading.dismiss();
+      
+      if (service.idService) {
+
+      }
+
+    }, err => {
+      loading.dismiss();
+      let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
+      alert.present();
+    });
   }
 
-  setSource(data: any) {
-    console.log(data);
+  showAddressModal () {
+    let modal = this.modalCtrl.create(AutocompletePage);
+    let me = this;
+    modal.onDidDismiss(data => {
+      this.address.place = data;
+    });
+    modal.present();
   }
 
   setDestiny(data: any) {
     console.log(data);
+    this.data.destiny = {
+      address: data.description,
+      place_id: data.place_id,
+    };
   }
 }

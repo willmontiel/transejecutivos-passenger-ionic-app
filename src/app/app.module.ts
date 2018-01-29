@@ -9,6 +9,7 @@ import { ServicesPage } from '../pages/services/services';
 import { ServicePage } from '../pages/service/service';
 import { LoginPage } from '../pages/login/login';
 import { RequestServicePage } from '../pages/request-service/request-service';
+import { AutoCompletePage } from '../pages/auto-complete/auto-complete';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,6 @@ import { ApiConfigProvider } from '../providers/api-config/api-config';
 import { DbProvider } from '../providers/db/db';
 
 //Vendors
-import { GooglePlacesAutocompleteComponentModule } from 'ionic2-google-places-autocomplete';
 import { GlobalProvider } from '../providers/global/global';
 
 @NgModule({
@@ -31,17 +31,22 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     ServicesPage,
     ServicePage,
-    RequestServicePage
+    RequestServicePage,
+    AutoCompletePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+      monthShortNames: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+      dayShortNames: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+    }),
     HttpModule,
     IonicStorageModule.forRoot({
       name: '__transejecutivosp',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
-    }),
-    GooglePlacesAutocompleteComponentModule
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +55,8 @@ import { GlobalProvider } from '../providers/global/global';
     HomePage,
     ServicesPage,
     ServicePage,
-    RequestServicePage
+    RequestServicePage,
+    AutoCompletePage
   ],
   providers: [
     StatusBar,
