@@ -46,8 +46,7 @@ export class ServicesPage {
 
   getServicesByDate(data) {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando',
-      dismissOnPageChange: true
+      content: 'Cargando'
     });
     loading.present();
 

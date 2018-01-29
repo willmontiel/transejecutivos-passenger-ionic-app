@@ -24,18 +24,18 @@
 
           <ion-item>
             <ion-label floating>Hora</ion-label>
-            <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="time" displayFormat="hh:mm" pickerFormat="hh:mm" [(ngModel)]="data.time"
+            <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="time" displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="data.time"
               required></ion-datetime>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Dirección de inicio</ion-label>
-            <ion-input name="startAddress" (click)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
+            <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>Dirección de fin</ion-label>
-            <ion-input name="endAddress" (click)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+            <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -72,7 +72,7 @@
 
     <ion-row>
       <ion-col class="signup-col">
-        <button ion-button color="secondary" full type="submit" [disabled]="!requestServiceForm.form.valid">Solicitar</button>
+        <button ion-button color="secondary" full type="submit" [disabled]="!requestServiceForm.form.valid || !data.startAddress || !data.endAddress">Solicitar</button>
       </ion-col>
     </ion-row>
   </form>

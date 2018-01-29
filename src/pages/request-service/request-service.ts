@@ -54,8 +54,7 @@ export class RequestServicePage {
 
   getCarTypes() {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando',
-      dismissOnPageChange: true
+      content: 'Cargando'
     });
     loading.present();
 
@@ -71,8 +70,7 @@ export class RequestServicePage {
 
   getAerolines() {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando',
-      dismissOnPageChange: true
+      content: 'Cargando'
     });
     loading.present();
 
@@ -88,8 +86,7 @@ export class RequestServicePage {
 
   requestService() {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando',
-      dismissOnPageChange: true
+      content: 'Cargando'
     });
     loading.present();
 
@@ -111,18 +108,20 @@ export class RequestServicePage {
     let modal = this.modalCtrl.create(AutoCompletePage);
     let me = this;
     modal.onDidDismiss(data => {
-      if (type == 'source') {
-        this.data.startAddress = data.description;
-        this.data.source = {
-          address: data.description,
-          place_id: data.place_id,
-        };
-      } else if (type == 'destiny') {
-        this.data.endAddress = data.description;
-        this.data.destiny = {
-          address: data.description,
-          place_id: data.place_id,
-        };
+      if (data) {
+        if (type == 'source') {
+          this.data.startAddress = data.description;
+          this.data.source = {
+            address: data.description,
+            place_id: data.place_id,
+          };
+        } else if (type == 'destiny') {
+          this.data.endAddress = data.description;
+          this.data.destiny = {
+            address: data.description,
+            place_id: data.place_id,
+          };
+        }
       }
     });
     modal.present();

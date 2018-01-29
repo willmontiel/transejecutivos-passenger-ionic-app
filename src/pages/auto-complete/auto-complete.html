@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar placeholder="Escribe la dirección" [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+    <ion-searchbar autofocus placeholder="Escribe la dirección" [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>

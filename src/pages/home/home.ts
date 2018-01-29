@@ -5,7 +5,8 @@ import { RequestServicePage } from '../../pages/request-service/request-service'
 import { Platform } from 'ionic-angular';
 
 //Providers
-import { DbProvider } from '../../providers/db/db';
+import { ApiConfigProvider } from '../../providers/api-config/api-config';
+//Pages
 import { LoginPage } from '../login/login';
 
 @Component({
@@ -17,7 +18,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     private platform: Platform,
-    private dbProvider: DbProvider) {
+    private apiConfigProvider: ApiConfigProvider) {
     this.pages = [
       {
         'title': 'Mis reservas',

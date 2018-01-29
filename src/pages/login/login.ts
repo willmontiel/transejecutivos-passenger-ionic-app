@@ -36,8 +36,7 @@ export class LoginPage {
   
   public login() {
     let loading = this.loadingCtrl.create({
-      content: 'Cargando',
-      dismissOnPageChange: true
+      content: 'Cargando'
     });
     loading.present();
 

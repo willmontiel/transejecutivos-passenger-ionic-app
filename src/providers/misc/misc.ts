@@ -14,8 +14,7 @@ export class MiscProvider {
 
   createLoader(msg: string = "Please wait..."): any {
     return this.loadingCtrl.create({
-      content: msg,
-      dismissOnPageChange: true
+      content: msg
     });
   }
 
