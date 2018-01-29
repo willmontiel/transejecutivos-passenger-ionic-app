@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 //Providers
 import { ApiConfigProvider } from '../api-config/api-config';
-import { DbProvider } from '../db/db';
 //Models
 import { Service } from '../../models/service';
 import { User } from '../../models/user';
@@ -18,9 +16,7 @@ export class ServiceProvider {
   private headers: Headers;
 
   constructor(public http: Http,
-    private apiConfigProvider: ApiConfigProvider,
-    private dbProvider: DbProvider,
-    private storage: Storage) {
+    private apiConfigProvider: ApiConfigProvider) {
   }
 
   getServicesByDate(data: any, user: User): Observable<Service[]> {

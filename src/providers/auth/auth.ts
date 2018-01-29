@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 //Providers
 import { ApiConfigProvider } from '../api-config/api-config';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoadingController, NavController, NavParams } from 'ionic-angular';
 
 //Models
 import { Service } from '../../models/service';
@@ -9,7 +9,6 @@ import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
 //Pages
 import { ServicePage } from '../../pages/service/service';
-import { LoginPage } from '../../pages/login/login';
 import { GlobalProvider } from '../../providers/global/global';
 import { RequestServicePage } from '../request-service/request-service';
 //Vendors

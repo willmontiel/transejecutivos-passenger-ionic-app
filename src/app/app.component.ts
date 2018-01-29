@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
-import { RequestServicePage } from '../pages/request-service/request-service';
 //Providers
 import { DbProvider } from '../providers/db/db';
 import { GlobalProvider } from '../providers/global/global';

@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 
 //Providers
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
+import { DbProvider } from '../../providers/db/db';
 //Pages
 import { LoginPage } from '../login/login';
 
@@ -18,6 +19,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,
     private platform: Platform,
+    private dbProvider: DbProvider,
     private apiConfigProvider: ApiConfigProvider) {
     this.pages = [
       {
