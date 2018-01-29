@@ -1,13 +1,15 @@
 import {Component, NgZone} from '@angular/core';
 import {ViewController} from 'ionic-angular';
 
+declare var google; 
+
 @Component({
   templateUrl: 'auto-complete.html',
 })
 export class AutoCompletePage {
   autocompleteItems;
   autocomplete;
-  private google: any;
+  
   service = new google.maps.places.AutocompleteService();
 
   constructor(public viewCtrl: ViewController, private zone: NgZone) {

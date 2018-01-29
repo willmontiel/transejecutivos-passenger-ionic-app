@@ -14,8 +14,6 @@ import moment from 'moment';
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
 
-
-@IonicPage()
 @Component({
   selector: 'page-request-service',
   templateUrl: 'request-service.html',

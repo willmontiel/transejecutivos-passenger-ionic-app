@@ -4,7 +4,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 //Models
 import { Service } from '../../models/service';
 
-@IonicPage()
 @Component({
   selector: 'page-service',
   templateUrl: 'service.html',

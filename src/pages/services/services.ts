@@ -11,12 +11,12 @@ import { MiscProvider } from '../../providers/misc/misc';
 import { ServicePage } from '../../pages/service/service';
 import { LoginPage } from '../../pages/login/login';
 import { GlobalProvider } from '../../providers/global/global';
+import { RequestServicePage } from '../request-service/request-service';
 //Vendors
 import moment from 'moment';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 
-@IonicPage()
 @Component({
   selector: 'page-services',
   templateUrl: 'services.html',
@@ -81,6 +81,10 @@ export class ServicesPage {
 
   goToService(service) {
     this.navCtrl.push(ServicePage, { service: service });
+  }
+
+  goToRequestService(service) {
+    this.navCtrl.push(RequestServicePage);
   }
 
   callDriver(service) {

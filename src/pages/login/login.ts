@@ -12,7 +12,6 @@ import { ApiConfigProvider } from '../../providers/api-config/api-config';
 //Pages
 import { HomePage } from '../../pages/home/home';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
