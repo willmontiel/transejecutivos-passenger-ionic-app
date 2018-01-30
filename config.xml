@@ -3,7 +3,7 @@
     <name>Transportes Ejecutivos</name>
     <description>Transportes Ejecutivos passengers app.</description>
     <author email="will.montiel@outlook.com" href="http://willmontiel.github.io/">Will Montiel</author>
-    <content original-src="index.html" src="http://192.168.0.39:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

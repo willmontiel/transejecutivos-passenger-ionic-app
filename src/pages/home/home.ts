@@ -60,20 +60,28 @@ export class HomePage {
         'color': 'danger',
         'page': 'Logout'
       },
+      /*
       {
         'title': 'Salir',
         'icon': 'exit',
         'color': 'success',
         'page': 'Exit'
       },
+      */
     ]
+
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+        navigator['app'].exitApp();
+      });
+    });
   }
 
   goToPage(page) {
     if (page == 'ServicesPage') {
-      this.navCtrl.push(ServicesPage, {time: 'present', title: 'Lista de reservas'});
+      this.navCtrl.push(ServicesPage, { time: 'present', title: 'Lista de reservas' });
     } else if (page == 'OlderServicesPage') {
-      this.navCtrl.push(ServicesPage, { time: 'past',  title: 'Reservas anteriores'});
+      this.navCtrl.push(ServicesPage, { time: 'past', title: 'Reservas anteriores' });
     } else if (page == 'RequestServicePage') {
       this.navCtrl.push(RequestServicePage);
     } else if (page == 'Logout') {

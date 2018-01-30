@@ -95,6 +95,7 @@ export class RequestServicePage {
       loading.dismiss();
       
       if (service.idService) {
+        this.navCtrl.pop();
         this.navCtrl.push(ServicePage, { service: service });
       }
     }, err => {
