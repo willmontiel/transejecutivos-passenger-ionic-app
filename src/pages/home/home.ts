@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ServicesPage } from '../../pages/services/services';
-import { RequestServicePage } from '../../pages/request-service/request-service';
 import { Platform } from 'ionic-angular';
-
 //Providers
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
 import { DbProvider } from '../../providers/db/db';
 //Pages
 import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
+import { ServicesPage } from '../../pages/services/services';
+import { RequestServicePage } from '../../pages/request-service/request-service';
 
 @Component({
   selector: 'page-home',
@@ -39,6 +39,12 @@ export class HomePage {
         'icon': 'briefcase',
         'color': 'primary',
         'page': 'RequestServicePage'
+      },
+      {
+        'title': 'Mi perfil',
+        'icon': 'briefcase',
+        'color': 'primary',
+        'page': 'ProfilePage'
       },
       /*
       {
@@ -84,6 +90,8 @@ export class HomePage {
       this.navCtrl.push(ServicesPage, { time: 'past', title: 'Reservas anteriores' });
     } else if (page == 'RequestServicePage') {
       this.navCtrl.push(RequestServicePage);
+    } else if(page == 'ProfilePage') {
+      this.navCtrl.push(ProfilePage);
     } else if (page == 'Logout') {
       this.logout();
     } else if (page == 'Exit') {

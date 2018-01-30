@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const URL_BASE: string = "/api";
+const URL_BASE: string = "http://app.transportesejecutivos.com";
 const API_BASE: string = "api/passengerapp";
 const API_GENERAL_BASE: string = "api/general";
 const API_V1: string = "v1";
