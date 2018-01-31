@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 //Providers
@@ -9,6 +9,8 @@ import { User } from '../../models/user';
 
 @Injectable()
 export class AuthProvider {
+
+  private headers: Headers;
 
   constructor(public http: Http, 
     private apiConfigProvider: ApiConfigProvider) {
@@ -23,5 +25,16 @@ export class AuthProvider {
     return this.http.post(this.apiConfigProvider.get().login, credentials)
       .map(res => <User>res.json())
       .catch((error:any) => Observable.throw(error.json().message || console.log(JSON.stringify(error)) + 'Server error'));
+  }
+
+  updateProfile(data: any, user: User): Observable<User> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    this.headers.append('Content-Type', 'application/json')
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.post(this.apiConfigProvider.get().updateProfile, data, options)
+      .map(res => <User>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 }

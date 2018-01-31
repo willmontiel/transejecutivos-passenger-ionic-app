@@ -29,17 +29,9 @@
         <ion-card-content no-padding>
           <ion-row class="pl-15 pr-15 pt-5 pb-5">
             <ion-col col-12>
-              <ion-item no-padding text-wrap class="dark-brown-fg">
-                {{ service?.code }}
-              </ion-item>
-            </ion-col>
-          </ion-row>
-
-          <ion-row class="pl-15 pr-15 pt-5">
-            <ion-col col-12>
               <div *ngIf="service?.passengers && service?.passengers.length">
                 <ion-item no-padding text-wrap class="secondary-fg">
-                  <ion-icon name="return-right" color="secondary"></ion-icon>
+                  <ion-icon name="flag" color="secondary"></ion-icon>
                   {{ service?.passengers[0]?.source?.city?.name }} {{ service?.passengers[0]?.source?.address }}
                 </ion-item>
               </div>
@@ -54,7 +46,7 @@
           <ion-row class="pl-15 pr-15 pt-5 pb-5">
             <ion-col col-12>
               <ion-item no-padding text-wrap class="success-fg">
-                <ion-icon name="return-left" color="success"></ion-icon>
+                <ion-icon name="pin" color="success"></ion-icon>
                 {{ service?.destiny?.city?.name }} {{ service?.destiny?.address }}
               </ion-item>
             </ion-col>

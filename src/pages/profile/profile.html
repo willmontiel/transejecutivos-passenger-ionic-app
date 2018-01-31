@@ -10,7 +10,35 @@
     <ion-row>
       <ion-col>
         <ion-list>
+          <ion-item>
+            <ion-label floating>*Nombre</ion-label>
+            <ion-input type="text" name="name" [(ngModel)]="user.name" required></ion-input>
+          </ion-item>
 
+          <ion-item>
+            <ion-label floating>*Apellido</ion-label>
+            <ion-input type="text" name="lastname" [(ngModel)]="user.lastname" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>*Teléfono 1</ion-label>
+            <ion-input type="text" name="phone1" [(ngModel)]="user.phone1" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Teléfono 2</ion-label>
+            <ion-input type="text" name="phone2" [(ngModel)]="user.phone2"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>*Dirección de correo eléctronico</ion-label>
+            <ion-input type="text" name="email1" [(ngModel)]="user.email1" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Dirección de correo eléctronico (Alternativo)</ion-label>
+            <ion-input type="text" name="email2" [(ngModel)]="user.email2"></ion-input>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

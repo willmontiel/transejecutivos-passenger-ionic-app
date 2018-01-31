@@ -11,34 +11,34 @@
       <ion-col>
         <ion-list>
           <ion-item>
-            <ion-label floating>Fecha</ion-label>
+            <ion-label floating>*Fecha</ion-label>
             <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="date" displayFormat="DD MMM/YYYY" pickerFormat="YYYY-MM-DD" [(ngModel)]="data.date"
               required></ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Hora</ion-label>
+            <ion-label floating>*Hora</ion-label>
             <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="time" displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="data.time"
               required></ion-datetime>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Dirección de inicio</ion-label>
+            <ion-label floating>*Dirección de inicio</ion-label>
             <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Dirección de fin</ion-label>
+            <ion-label floating>*Dirección de fin</ion-label>
             <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Cantidad de pasajeros</ion-label>
+            <ion-label floating>*Cantidad de pasajeros</ion-label>
             <ion-input name="passengers" min="1" type="number" [(ngModel)]="data.passengers" required></ion-input>
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Tipo de vehículo</ion-label>
+            <ion-label floating>*Tipo de vehículo</ion-label>
             <ion-select name="idCarType" [(ngModel)]="data.idCarType" okText="Aceptar" cancelText="Cerrar" required>
               <ion-option value="{{carType.idCarType}}" *ngFor="let carType of carTypes">{{ carType.name }}</ion-option>
             </ion-select>
@@ -52,7 +52,7 @@
           </ion-item>
 
           <ion-item *ngIf="data.idAeroline">
-            <ion-label floating>Código del vuelo</ion-label>
+            <ion-label floating>*Código del vuelo</ion-label>
             <ion-input autocomplete name="flyCode" type="text" [(ngModel)]="data.flyCode" required></ion-input>
           </ion-item>
 
