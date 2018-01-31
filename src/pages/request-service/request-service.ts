@@ -92,6 +92,8 @@ export class RequestServicePage {
     });
     loading.present();
 
+    this.data.date = moment(this.data.startDate).format('YYYY-MM-DD');
+
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;
       loading.dismiss();

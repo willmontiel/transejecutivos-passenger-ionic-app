@@ -201,3 +201,9 @@
 .bl-danger {
     border-left: 1px solid color($colors, danger);
 }
+
+.home-logo {
+    background-image: url(../../assets/imgs/logo-large.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
