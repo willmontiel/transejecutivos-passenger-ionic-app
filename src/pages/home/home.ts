@@ -9,6 +9,8 @@ import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { ServicesPage } from '../../pages/services/services';
 import { RequestServicePage } from '../../pages/request-service/request-service';
+import { GlobalProvider } from '../../providers/global/global';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'page-home',
@@ -16,10 +18,12 @@ import { RequestServicePage } from '../../pages/request-service/request-service'
 })
 export class HomePage {
   pages = [];
+  user: User;
 
   constructor(public navCtrl: NavController,
     private platform: Platform,
     private dbProvider: DbProvider,
+    private globalProvider: GlobalProvider,
     private apiConfigProvider: ApiConfigProvider) {
     this.pages = [
       {
@@ -75,6 +79,8 @@ export class HomePage {
       },
       */
     ]
+
+    this.user = this.globalProvider.getUser();
 
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {

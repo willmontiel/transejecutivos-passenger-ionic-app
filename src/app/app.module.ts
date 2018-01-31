@@ -21,9 +21,9 @@ import { MiscProvider } from '../providers/misc/misc';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiConfigProvider } from '../providers/api-config/api-config';
 import { DbProvider } from '../providers/db/db';
+import { GlobalProvider } from '../providers/global/global';
 
 //Vendors
-import { GlobalProvider } from '../providers/global/global';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 

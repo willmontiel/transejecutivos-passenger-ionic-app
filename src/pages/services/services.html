@@ -81,7 +81,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-fab right bottom>
+  <ion-fab right bottom *ngIf="user.type == 'passenger'">
     <button ion-fab color="secondary" (click)="goToRequestService()">
       <ion-icon name="add"></ion-icon>
     </button>

@@ -13,6 +13,8 @@ import moment from 'moment';
 //Pages
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
+//Vendors
+import { DatePickerDirective } from 'ion-datepicker';
 
 @Component({
   selector: 'page-request-service',
@@ -96,7 +98,7 @@ export class RequestServicePage {
       
       if (service.idService) {
         this.navCtrl.pop();
-        this.miscProvider.presentToast("Reserva realizada exitosamente", 'bottom');
+        this.miscProvider.presentToast("Reserva realizada exitosamente, pronto asignaremos un conductor", 'bottom');
         this.navCtrl.push(ServicePage, { service: service });
       }
     }, err => {
