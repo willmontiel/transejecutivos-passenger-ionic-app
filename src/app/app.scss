@@ -150,6 +150,26 @@
     padding-left: 5px !important;
 }
 
+.p-8 {
+    padding: 8px !important;
+}
+
+.pt-8 {
+    padding-top: 8px !important;
+}
+
+.pr-8 {
+    padding-right: 8px !important;
+}
+
+.pb-8 {
+    padding-bottom: 8px !important;
+}
+
+.pl-8 {
+    padding-left: 8px !important;
+}
+
 .no-margin {
     margin: 0px !important;
 }
@@ -206,4 +226,12 @@
     background-image: url(../../assets/img/logo-large.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.fs-50 {
+    font-size: 50px;
+}
+
+.fs-30 {
+    font-size: 30px;
 }
