@@ -10,6 +10,7 @@ import { ServicePage } from '../pages/service/service';
 import { LoginPage } from '../pages/login/login';
 import { RequestServicePage } from '../pages/request-service/request-service';
 import { AutoCompletePage } from '../pages/auto-complete/auto-complete';
+import { ProfilePage } from '../pages/profile/profile';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,8 @@ import { SMS } from '@ionic-native/sms';
     ServicesPage,
     ServicePage,
     RequestServicePage,
-    AutoCompletePage
+    AutoCompletePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,8 @@ import { SMS } from '@ionic-native/sms';
     ServicesPage,
     ServicePage,
     RequestServicePage,
-    AutoCompletePage
+    AutoCompletePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

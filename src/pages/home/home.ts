@@ -42,7 +42,7 @@ export class HomePage {
       },
       {
         'title': 'Mi perfil',
-        'icon': 'briefcase',
+        'icon': 'contact',
         'color': 'primary',
         'page': 'ProfilePage'
       },
