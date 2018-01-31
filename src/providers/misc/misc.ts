@@ -29,13 +29,13 @@ export class MiscProvider {
   }
 
   isValidMobile(number: string): any {
-    let regExp = /^[0-9]{10}$/;
+    let value = parseInt(number);
 
-    if (!regExp.test(number)) {
-      return false;
+    if (value != NaN && typeof value == "number") {
+      return true;
     }
 
-    return true;
+    return false;
   }
 
   presentToast(msg, position) {
