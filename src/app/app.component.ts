@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { ServicesPage } from '../pages/services/services';
 import { LoginPage } from '../pages/login/login';
 //Providers
 import { DbProvider } from '../providers/db/db';

@@ -8,7 +8,6 @@ import { MiscProvider } from '../../providers/misc/misc';
 import { DbProvider } from '../../providers/db/db';
 import { GlobalProvider } from '../../providers/global/global';
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
-
 //Pages
 import { HomePage } from '../../pages/home/home';
 

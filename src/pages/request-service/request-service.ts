@@ -96,6 +96,7 @@ export class RequestServicePage {
       
       if (service.idService) {
         this.navCtrl.pop();
+        this.miscProvider.presentToast("Reserva realizada exitosamente", 'bottom');
         this.navCtrl.push(ServicePage, { service: service });
       }
     }, err => {

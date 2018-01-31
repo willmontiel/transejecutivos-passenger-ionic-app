@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, ToastController, AlertController } from 'ionic-angular';
 
 /*
   Generated class for the MiscProvider provider.
@@ -10,7 +10,9 @@ import { LoadingController, AlertController } from 'ionic-angular';
 @Injectable()
 export class MiscProvider {
 
-  constructor(public loadingCtrl: LoadingController, private alertCtrl: AlertController) { }
+  constructor(public loadingCtrl: LoadingController, 
+    private alertCtrl: AlertController,
+    public toastCtrl: ToastController,) { }
 
   createLoader(msg: string = "Please wait..."): any {
     return this.loadingCtrl.create({
@@ -34,5 +36,14 @@ export class MiscProvider {
     }
 
     return true;
+  }
+
+  presentToast(msg, position) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: position
+    });
+    toast.present();
   }
 }

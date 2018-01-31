@@ -27,14 +27,14 @@ export class AuthProvider {
       .catch((error:any) => Observable.throw(error.json().message || console.log(JSON.stringify(error)) + 'Server error'));
   }
 
-  updateProfile(data: any, user: User): Observable<User> {
+  updateProfile(data: any, user: User): Observable<any> {
     this.headers = new Headers();
     this.headers.append('Authorization', user.api_key);
     this.headers.append('Content-Type', 'application/json')
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.apiConfigProvider.get().updateProfile, data, options)
-      .map(res => <User>res.json().data)
+      .map(res => <any>res.json())
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 }
