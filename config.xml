@@ -84,9 +84,9 @@
     <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
     <allow-navigation href="http://192.168.0.13:8100" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
     <allow-navigation href="http://192.168.0.14:8100" />
     <allow-navigation href="http://192.168.0.39:8100" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="call-number" spec="^1.0.1" />
+    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
+    <engine name="android" spec="7.0.0" />
 </widget>
