@@ -16,11 +16,15 @@ import { ServicePage } from '../../pages/service/service';
 //Vendors
 import { DatePickerDirective } from 'ion-datepicker';
 
+
 @Component({
   selector: 'page-request-service',
   templateUrl: 'request-service.html',
+  providers:[DatePickerDirective],
 })
 export class RequestServicePage {
+  @ViewChild(DatePickerDirective) public datepicker: DatePickerDirective;
+
   data: any = {
     date: '',
     time: '',
@@ -48,6 +52,10 @@ export class RequestServicePage {
     this.getAerolines();
 
     this.minDate = moment().format('YYYY-MM-DD');
+  }
+
+  public closeDatepicker(){
+      this.datepicker.modal.dismiss();
   }
 
   ionViewDidLoad() {

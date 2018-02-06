@@ -26,6 +26,7 @@ import { GlobalProvider } from '../providers/global/global';
 //Vendors
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
+import { DatePickerModule } from 'ion-datepicker';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SMS } from '@ionic-native/sms';
     IonicStorageModule.forRoot({
       name: '__transejecutivosp',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
-    })
+    }),
+    DatePickerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

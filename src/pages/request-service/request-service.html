@@ -23,6 +23,12 @@
           </ion-item>
 
           <ion-item>
+            <span ion-datepicker  [(value)]="localDate" [min]="localDate" clear class="ScheduleDate">
+              <span>{{localDate | date}} <ion-icon name="clipboard" item-left ></ion-icon> </span>
+            </span>
+          </ion-item>
+
+          <ion-item>
             <ion-label floating>*Dirección de inicio</ion-label>
             <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
