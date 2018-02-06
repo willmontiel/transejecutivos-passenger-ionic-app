@@ -32,7 +32,11 @@
               <div *ngIf="service?.passengers && service?.passengers.length">
                 <ion-item no-padding text-wrap class="secondary-fg">
                   <ion-icon name="flag" color="secondary"></ion-icon>
-                  {{ service?.passengers[0]?.source?.city?.name }} {{ service?.passengers[0]?.source?.address }}
+                  <span *ngIf="service?.passengers[0]?.source?.city?.name != 'Aplicación móvil pasajeros'">
+                    {{ service?.passengers[0]?.source?.city?.name }}
+                  </span>
+                  
+                  {{ service?.passengers[0]?.source?.address }}
                 </ion-item>
               </div>
               <div *ngIf="!service?.passengers || !service?.passengers.length">
@@ -47,7 +51,11 @@
             <ion-col col-12>
               <ion-item no-padding text-wrap class="success-fg">
                 <ion-icon name="pin" color="success"></ion-icon>
-                {{ service?.destiny?.city?.name }} {{ service?.destiny?.address }}
+                <span *ngIf="service?.destiny?.city?.name != 'Aplicación móvil pasajeros'">
+                  {{ service?.destiny?.city?.name }} 
+                </span>
+                
+                {{ service?.destiny?.address }}
               </ion-item>
             </ion-col>
           </ion-row>

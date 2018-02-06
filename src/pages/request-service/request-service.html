@@ -29,7 +29,7 @@
 
           <ion-item>
             <ion-label floating>*Dirección de fin</ion-label>
-            <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+            <ion-input name="endAddress" (click)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>
@@ -45,7 +45,7 @@
           </ion-item>
 
           <ion-item>
-            <ion-label floating>Aerolínea</ion-label>
+            <ion-label floating>Aerolínea (Opcional)</ion-label>
             <ion-select name="idAeroline" [(ngModel)]="data.idAeroline" okText="Aceptar" cancelText="Cerrar">
               <ion-option value="{{aeroline.idAeroline}}" *ngFor="let aeroline of aerolines">{{ aeroline.name }}</ion-option>
             </ion-select>
