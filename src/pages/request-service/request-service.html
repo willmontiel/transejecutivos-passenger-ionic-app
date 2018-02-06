@@ -26,10 +26,10 @@
             <ion-label floating>*Dirección de inicio</ion-label>
             <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
-
+          
           <ion-item>
             <ion-label floating>*Dirección de fin</ion-label>
-            <ion-input name="endAddress" (click)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+            <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>

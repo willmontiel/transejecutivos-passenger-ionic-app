@@ -81,11 +81,10 @@ export class HomePage {
     ]
 
     this.user = this.globalProvider.getUser();
-
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
         navigator['app'].exitApp();
-      });
+      }, 0);
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingController, NavController, NavParams } from 'ionic-angular';
+import { Platform, LoadingController, NavController, NavParams } from 'ionic-angular';
 
 //Models
 import { Service } from '../../models/service';
@@ -9,6 +9,7 @@ import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
 //Pages
 import { ServicePage } from '../../pages/service/service';
+import { HomePage } from '../../pages/home/home';
 import { GlobalProvider } from '../../providers/global/global';
 import { RequestServicePage } from '../request-service/request-service';
 //Vendors
@@ -28,11 +29,19 @@ export class ServicesPage {
     public navParams: NavParams,
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
+    private platform: Platform,
     private globalProvider: GlobalProvider) {
 
     this.title = navParams.data.title;
     this.user = globalProvider.getUser();
     this.getServicesByDate(this.getDates(navParams.data.time));
+
+    this.platform.ready().then(() => {
+      this.platform.registerBackButtonAction(() => {
+        this.navCtrl.pop();
+        this.navCtrl.push(HomePage);
+      }, 2);
+    });
   }
 
   ionViewDidLoad() {
