@@ -26,7 +26,7 @@ import { GlobalProvider } from '../providers/global/global';
 //Vendors
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
-import { DatePickerModule } from 'ion-datepicker';
+import { DatePickerModule } from 'ionic2-date-picker';
 
 @NgModule({
   declarations: [

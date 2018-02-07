@@ -13,18 +13,14 @@ import moment from 'moment';
 //Pages
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
-//Vendors
-import { DatePickerDirective } from 'ion-datepicker';
+import { DatePickerOption, DatePickerProvider } from 'ionic2-date-picker';
 
 
 @Component({
   selector: 'page-request-service',
-  templateUrl: 'request-service.html',
-  providers:[DatePickerDirective],
+  templateUrl: 'request-service.html'
 })
 export class RequestServicePage {
-  @ViewChild(DatePickerDirective) public datepicker: DatePickerDirective;
-
   data: any = {
     date: '',
     time: '',
@@ -45,7 +41,8 @@ export class RequestServicePage {
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider,
-    private modalCtrl: ModalController) {
+    private modalCtrl: ModalController,
+    private datePickerProvider: DatePickerProvider) {
 
     this.user = globalProvider.getUser();
     this.getCarTypes();
@@ -54,12 +51,20 @@ export class RequestServicePage {
     this.minDate = moment().format('YYYY-MM-DD');
   }
 
-  public closeDatepicker(){
-      this.datepicker.modal.dismiss();
-  }
-
   ionViewDidLoad() {
 
+  }
+
+  showCalendar() {
+    let datePickerOption: DatePickerOption = {
+        minimumDate: new Date()
+    }; 
+
+    const dateSelected = this.datePickerProvider.showCalendar(this.modalCtrl, datePickerOption);
+
+    dateSelected.subscribe(date => 
+      this.data.startDate = moment(date).format('YYYY-MM-DD')
+    );
   }
 
   getCarTypes() {

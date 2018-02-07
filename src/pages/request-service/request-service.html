@@ -10,22 +10,16 @@
     <ion-row>
       <ion-col>
         <ion-list>
+
           <ion-item>
             <ion-label floating>*Fecha</ion-label>
-            <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="startDate" displayFormat="DD MMM/YYYY" pickerFormat="DD MMM/YYYY" [(ngModel)]="data.startDate"
-              required></ion-datetime>
+            <ion-input name="startDate"  (click)="showCalendar()" [(ngModel)]="data.startDate" required readonly></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>*Hora</ion-label>
             <ion-datetime doneText="Aceptar" cancelText="Cerrar" name="time" displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="data.time"
               required></ion-datetime>
-          </ion-item>
-
-          <ion-item>
-            <span ion-datepicker  [(value)]="localDate" [min]="localDate" clear class="ScheduleDate">
-              <span>{{localDate | date}} <ion-icon name="clipboard" item-left ></ion-icon> </span>
-            </span>
           </ion-item>
 
           <ion-item>
