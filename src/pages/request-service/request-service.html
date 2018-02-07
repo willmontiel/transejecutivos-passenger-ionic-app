@@ -13,12 +13,12 @@
 
           <ion-item>
             <ion-label floating>*Fecha</ion-label>
-            <ion-input  name="startDate" (ionFocus)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
+            <ion-input  name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
           </ion-item>
 
           <ion-item>
             <ion-label floating>*Hora</ion-label>
-            <ion-input name="time" (ionFocus)="showTimePicker()" [(ngModel)]="data.time" required readonly></ion-input>
+            <ion-input name="time" (click)="showTimePicker()" [(ngModel)]="data.time" required readonly></ion-input>
           </ion-item>
 
           <ion-item>

@@ -74,7 +74,8 @@ export class RequestServicePage {
       mode: 'time',
       okText: "Aceptar",
       cancelText: "Cerrar",
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_TRADITIONAL
+      is24Hour: true,
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_LIGHT
     }).then(
       date => this.data.time = moment(date).format('HH:mm'),
       err => console.log('Error occurred while getting date: ', err)
