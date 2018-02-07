@@ -13,8 +13,7 @@ import moment from 'moment';
 //Pages
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
-import { DatePickerOption, DatePickerProvider } from 'ionic2-date-picker';
-
+import { DatePicker } from '@ionic-native/date-picker';
 
 @Component({
   selector: 'page-request-service',
@@ -42,7 +41,7 @@ export class RequestServicePage {
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider,
     private modalCtrl: ModalController,
-    private datePickerProvider: DatePickerProvider) {
+    private datePicker: DatePicker) {
 
     this.user = globalProvider.getUser();
     this.getCarTypes();
@@ -55,15 +54,30 @@ export class RequestServicePage {
 
   }
 
-  showCalendar() {
-    let datePickerOption: DatePickerOption = {
-        minimumDate: new Date()
-    }; 
+  showDatePicker() {
+    this.datePicker.show({
+      date: new Date(),
+      minDate: new Date(),
+      mode: 'date',
+      okText: "Aceptar",
+      cancelText: "Cerrar",
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+    }).then(
+      date => this.data.startDate = moment(date).format('DD MMM/YYYY'),
+      err => console.log('Error occurred while getting date: ', err)
+    );
+  }
 
-    const dateSelected = this.datePickerProvider.showCalendar(this.modalCtrl, datePickerOption);
-
-    dateSelected.subscribe(date => 
-      this.data.startDate = moment(date).format('YYYY-MM-DD')
+  showTimePicker() {
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'time',
+      okText: "Aceptar",
+      cancelText: "Cerrar",
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_TRADITIONAL
+    }).then(
+      date => this.data.time = moment(date).format('HH:mm'),
+      err => console.log('Error occurred while getting date: ', err)
     );
   }
 
