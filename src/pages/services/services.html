@@ -29,21 +29,24 @@
         <ion-card-content no-padding>
           <ion-row class="pl-15 pr-15 pt-5 pb-5">
             <ion-col col-12>
+
               <div *ngIf="service?.passengers && service?.passengers.length">
-                <ion-item no-padding text-wrap class="secondary-fg">
+                <ion-item *ngFor="let passenger of service?.passengers" no-padding text-wrap class="secondary-fg">
                   <ion-icon name="flag" color="secondary"></ion-icon>
                   <span *ngIf="service?.passengers[0]?.source?.city?.name != 'Aplicación móvil pasajeros'">
-                    {{ service?.passengers[0]?.source?.city?.name }}
+                    {{ passenger?.source?.city?.name }}
                   </span>
                   
-                  {{ service?.passengers[0]?.source?.address }}
+                  {{ passenger?.source?.address }}
                 </ion-item>
               </div>
+
               <div *ngIf="!service?.passengers || !service?.passengers.length">
-                <ion-item no-padding text-wrap class="secondary-fg">
+                <ion-item no-padding text-wrap class="danger-fg">
                   No disponible
                 </ion-item>
               </div>
+
             </ion-col>
           </ion-row>
 

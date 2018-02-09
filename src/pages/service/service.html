@@ -33,17 +33,24 @@
 
       <ion-row class="pl-15 pr-15 pt-5">
         <ion-col col-12>
-          <div *ngIf="service?.passengers && service?.passengers.length">
-            <ion-item no-padding text-wrap class="secondary-fg">
-              <ion-icon name="flag" color="secondary"></ion-icon>
-              {{ service?.passengers[0]?.source?.city?.name }} {{ service?.passengers[0]?.source?.address }}
-            </ion-item>
-          </div>
-          <div *ngIf="!service?.passengers || !service?.passengers.length">
-            <ion-item no-padding text-wrap class="danger-fg">
-              No disponible
-            </ion-item>
-          </div>
+
+            <div *ngIf="service?.passengers && service?.passengers.length">
+              <ion-item *ngFor="let passenger of service?.passengers" no-padding text-wrap class="secondary-fg">
+                <ion-icon name="flag" color="secondary"></ion-icon>
+                <span *ngIf="service?.passengers[0]?.source?.city?.name != 'Aplicación móvil pasajeros'">
+                  {{ passenger?.source?.city?.name }}
+                </span>
+                
+                {{ passenger?.source?.address }}
+              </ion-item>
+            </div>
+
+            <div *ngIf="!service?.passengers || !service?.passengers.length">
+              <ion-item no-padding text-wrap class="danger-fg">
+                No disponible
+              </ion-item>
+            </div>
+
         </ion-col>
       </ion-row>
 
@@ -51,7 +58,11 @@
         <ion-col col-12>
           <ion-item no-padding text-wrap class="success-fg">
             <ion-icon name="pin" color="success"></ion-icon>
-            {{ service?.destiny?.city?.name }} {{ service?.destiny?.address }}
+            <span *ngIf="service?.destiny?.city?.name != 'Aplicación móvil pasajeros'">
+              {{ service?.destiny?.city?.name }} 
+            </span>
+            
+            {{ service?.destiny?.address }}
           </ion-item>
         </ion-col>
       </ion-row>

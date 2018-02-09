@@ -31,6 +31,6 @@ export class ApiConfigProvider {
   }
 
   getVersion() {
-    return 'Versión 2.0';
+    return 'Versión 2.0.1';
   }
 }
