@@ -1,0 +1,6 @@
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore transejecutivos-pasajeros-key.jks /Users/willmontiel/Documents/transejecutivos-passenger-ionic-app/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk transejecutivos
+
+export ANDROID_HOME=/Users/willmontiel/Library/Android/sdk/
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+/Users/willmontiel/Library/Android/sdk/build-tools/25.0.2/zipalign -v 4 /Users/willmontiel/Documents/transejecutivos-passenger-ionic-app/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk transejecutivos.apk
