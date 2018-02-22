@@ -40,12 +40,19 @@ export class LoginPage {
     loading.present();
 
     this.authProvider.login(this.credentials).subscribe(user => {
-      this.user = user;
-      this.dbProvider.saveUser(this.user).then(() => {
+      if (user.type == "passenger" || user.type == "operator") {
+        this.user = user;
+        this.dbProvider.saveUser(this.user).then(() => {
+          loading.dismiss();
+          this.globalProvider.setUser(this.user);
+          this.navCtrl.setRoot(HomePage);
+        });
+      } else {
         loading.dismiss();
-        this.globalProvider.setUser(this.user);
-        this.navCtrl.setRoot(HomePage);
-      });
+        let alert = this.miscProvider.createAlert("Error", "Error tipo de usuario no soportado.", ['Cerrar']);
+        alert.present();
+      }
+      
     },
     err => {
         loading.dismiss();

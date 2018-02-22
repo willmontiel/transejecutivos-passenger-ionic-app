@@ -40,6 +40,7 @@
     "ionic": "^3.19.1",
     "ionic-angular": "3.9.2",
     "ionic-plugin-keyboard": "^2.2.1",
+    "ionic2-auto-complete": "^1.6.2-alpha",
     "ionicons": "3.0.0",
     "moment": "^2.20.1",
     "mx.ferreyra.callnumber": "0.0.2",

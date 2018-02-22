@@ -22,6 +22,12 @@
           </ion-item>
 
           <ion-item>
+            
+            <ion-auto-complete [dataProvider]="passengerProvider"></ion-auto-complete>
+            
+          </ion-item>
+
+          <ion-item>
             <ion-label floating>*Dirección de inicio</ion-label>
             <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>

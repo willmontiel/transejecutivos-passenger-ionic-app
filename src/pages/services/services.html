@@ -5,10 +5,19 @@
     </button>
     <ion-title>{{ title }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content overflow-scroll="false" no-padding>
+  <ion-grid>
+    <ion-row class="mb-5">
+      <ion-col col-12 *ngIf="services">
+        <ion-item>
+          Reservas totales: <ion-badge color="secondary" item-end>{{services.length}}</ion-badge>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <ion-list [virtualScroll]="services" no-padding>
     <ion-item *virtualItem="let service" no-padding color="light">
       <ion-card class="cards-list-demo" (click)="goToService(service)">
@@ -36,7 +45,7 @@
                   <span *ngIf="service?.passengers[0]?.source?.city?.name != 'Aplicación móvil pasajeros'">
                     {{ passenger?.source?.city?.name }}
                   </span>
-                  
+
                   {{ passenger?.source?.address }}
                 </ion-item>
               </div>
@@ -55,9 +64,9 @@
               <ion-item no-padding text-wrap class="success-fg">
                 <ion-icon name="pin" color="success"></ion-icon>
                 <span *ngIf="service?.destiny?.city?.name != 'Aplicación móvil pasajeros'">
-                  {{ service?.destiny?.city?.name }} 
+                  {{ service?.destiny?.city?.name }}
                 </span>
-                
+
                 {{ service?.destiny?.address }}
               </ion-item>
             </ion-col>
@@ -92,7 +101,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-fab right bottom *ngIf="user.type == 'passenger'">
+  <ion-fab right bottom>
     <button ion-fab color="secondary" (click)="goToRequestService()">
       <ion-icon name="add"></ion-icon>
     </button>

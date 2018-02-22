@@ -9,6 +9,7 @@ import { Service } from '../../models/service';
 import { User } from '../../models/user';
 import { CarType } from '../../models/car-type';
 import { Aeroline } from '../../models/aeroline';
+import { Passenger } from '../../models/passenger';
 
 @Injectable()
 export class ServiceProvider {
@@ -47,6 +48,16 @@ export class ServiceProvider {
 
     return this.http.get(this.apiConfigProvider.get().getAerolines, options)
       .map(res => <Aeroline[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
+  searchPassenger(user: User): Observable<Passenger[]> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.get(this.apiConfigProvider.get().searchPassenger, options)
+      .map(res => <Passenger[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 

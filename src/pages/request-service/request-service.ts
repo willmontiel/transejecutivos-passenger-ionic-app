@@ -5,15 +5,19 @@ import { User } from '../../models/user';
 import { Service } from '../../models/service';
 import { CarType } from '../../models/car-type';
 import { Aeroline } from '../../models/aeroline';
+import { Passenger } from '../../models/passenger';
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
 import { GlobalProvider } from '../../providers/global/global';
+import { PassengerProvider } from '../../providers/passenger/passenger';
 import moment from 'moment';
 //Pages
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
 import { DatePicker } from '@ionic-native/date-picker';
+//Vendors
+import {AutoCompleteModule} from 'ionic2-auto-complete';
 
 @Component({
   selector: 'page-request-service',
@@ -31,6 +35,7 @@ export class RequestServicePage {
   service: Service;
   carTypes: CarType[];
   aerolines: Aeroline[];
+  passengers: Passenger[];
   loading: any;
   minDate: string;
 
@@ -40,6 +45,7 @@ export class RequestServicePage {
     private serviceProvider: ServiceProvider,
     private miscProvider: MiscProvider,
     private globalProvider: GlobalProvider,
+    private passengerProvider: PassengerProvider,
     private modalCtrl: ModalController,
     private datePicker: DatePicker) {
 
@@ -104,8 +110,8 @@ export class RequestServicePage {
     });
     loading.present();
 
-    this.serviceProvider.getAerolines(this.user).subscribe(aeroline => {
-      this.aerolines = aeroline;
+    this.serviceProvider.getAerolines(this.user).subscribe(aerolines => {
+      this.aerolines = aerolines;
       loading.dismiss();
     }, err => {
       loading.dismiss();

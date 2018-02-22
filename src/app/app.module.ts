@@ -27,6 +27,8 @@ import { GlobalProvider } from '../providers/global/global';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { DatePicker } from '@ionic-native/date-picker';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
+import { PassengerProvider } from '../providers/passenger/passenger';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { DatePicker } from '@ionic-native/date-picker';
     IonicStorageModule.forRoot({
       name: '__transejecutivosp',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
-    })
+    }),
+    AutoCompleteModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,7 +79,8 @@ import { DatePicker } from '@ionic-native/date-picker';
     GlobalProvider,
     CallNumber,
     SMS,
-    DatePicker
+    DatePicker,
+    PassengerProvider
   ]
 })
 export class AppModule {}
