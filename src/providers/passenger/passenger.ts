@@ -12,7 +12,8 @@ import { User } from '../../models/user';
 @Injectable()
 export class PassengerProvider {
   private headers: Headers;
-  labelAttribute = "name";
+  labelAttribute = "completeName";
+  formValueAttribute = "idPassenger"
   user: User;
 
   constructor(public http: Http,
@@ -27,8 +28,8 @@ export class PassengerProvider {
     this.headers.append('Authorization', this.user.api_key);
     let options = new RequestOptions({ headers: this.headers });
 
-    return this.http.get(this.apiConfigProvider.get().searchPassenger, options)
-      .map(res => <any[]>res.json().data.filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()) ))
+    return this.http.get(this.apiConfigProvider.get().searchPassenger + "/" + keyword, options)
+      .map(res => <any[]>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 

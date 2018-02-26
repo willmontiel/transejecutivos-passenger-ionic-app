@@ -5,20 +5,17 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content no-padding>
   <form (ngSubmit)="requestService()" #requestServiceForm="ngForm">
-    <ion-row>
-      <ion-col>
+    <ion-row no-padding>
+      <ion-col no-padding>
         <ion-list>
-
-          <ion-item class="overflow">
-            <ion-label floating>*Pasajero</ion-label>
-            <ion-auto-complete item-content [dataProvider]="passengerProvider" [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
+          <ion-item *ngIf="this.user.type == 'company'" class="overflow pb-0" padding>
+            <ion-auto-complete item-content [dataProvider]="passengerProvider" #searchbar [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
           </ion-item>
 
-          <ion-item>
-            <ion-label floating>*Fecha</ion-label>
+          <ion-item class="pt-0" padding>
+            <ion-label floating>*Fecha {{data.idPassenger}}</ion-label>
             <ion-input name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
           </ion-item>
 

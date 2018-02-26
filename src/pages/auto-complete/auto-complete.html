@@ -1,9 +1,10 @@
-
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar autofocus placeholder="Escribe la dirección" [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()" (ionCancel)="dismiss()"></ion-searchbar>
+    <ion-searchbar autofocus placeholder="Escribe la dirección" [(ngModel)]="autocomplete.query" [showCancelButton]="true" (ionInput)="updateSearch()"
+      (ionCancel)="dismiss()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
   <ion-list *ngIf="autocompleteItems.length">
     <ion-item *ngFor="let item of autocompleteItems" tappable (click)="chooseItem(item)">
@@ -11,3 +12,14 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-grid padding>
+    <ion-row justify-content-center align-items-center>
+      <ion-col col-12>
+          Escribe la dirección de inicio o de fin del servicio y luego selecciona un elemento de la lista de sugerencias. Esta aplicación
+          está conectada a Google Maps.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -6,4 +6,11 @@ page-request-service {
     contain: none;
     overflow: visible;
   }
+  .item-inner {
+    padding: 0 !important;
+  }
+
+  ion-auto-complete {
+    width: 100% !important;
+  }
 }

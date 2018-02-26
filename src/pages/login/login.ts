@@ -40,7 +40,7 @@ export class LoginPage {
     loading.present();
 
     this.authProvider.login(this.credentials).subscribe(user => {
-      if (user.type == "passenger" || user.type == "operator") {
+      if (user.type == "passenger" || user.type == "company") {
         this.user = user;
         this.dbProvider.saveUser(this.user).then(() => {
           loading.dismiss();

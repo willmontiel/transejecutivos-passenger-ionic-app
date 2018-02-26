@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { LoadingController, IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 //Models
 import { User } from '../../models/user';
@@ -16,6 +16,7 @@ import moment from 'moment';
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
 import { DatePicker } from '@ionic-native/date-picker';
+import { AutoCompleteComponent } from 'ionic2-auto-complete';
 
 @Component({
   selector: 'page-request-service',
@@ -28,6 +29,9 @@ export class RequestServicePage {
     passengers: 1,
     idAeroline: null
   };
+
+  @ViewChild('searchbar')
+  searchbar: AutoCompleteComponent;
 
   user: User;
   service: Service;
@@ -118,13 +122,17 @@ export class RequestServicePage {
     });
   }
 
-  requestService() {
+  requestService(): void {
     let loading = this.loadingCtrl.create({
       content: 'Cargando'
     });
     loading.present();
 
     this.data.date = moment(this.data.startDate).format('YYYY-MM-DD');
+    let passenger = this.searchbar.getSelection();
+    if (passenger) {
+      this.data.idPassenger = passenger;
+    }
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;

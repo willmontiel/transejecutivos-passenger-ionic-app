@@ -84,7 +84,7 @@ export class HomePage {
     this.platform.ready().then(() => {
       this.platform.registerBackButtonAction(() => {
         navigator['app'].exitApp();
-      }, 0);
+      }, 1);
     });
   }
 
