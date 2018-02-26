@@ -128,11 +128,19 @@ export class RequestServicePage {
     });
     loading.present();
 
-    this.data.date = moment(this.data.startDate).format('YYYY-MM-DD');
-    let passenger = this.searchbar.getSelection();
-    if (passenger) {
-      this.data.idPassenger = passenger;
+    this.data.date = moment(this.data.startDate, 'DD MMM/YYYY').format('YYYY-MM-DD');
+
+    if (this.user.type == 'company') {
+      let passenger =
+       this.searchbar.getSelection();
+      if (passenger) {
+        this.data.idPassenger = passenger;
+      }
     }
+
+    console.log("date", this.data.date);
+    console.log("startDate", this.data.startDate);
+    console.log("starTime", this.data.time);
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;
