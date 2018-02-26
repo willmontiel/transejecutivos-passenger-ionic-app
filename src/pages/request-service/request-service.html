@@ -6,14 +6,20 @@
 
 
 <ion-content padding>
+
   <form (ngSubmit)="requestService()" #requestServiceForm="ngForm">
     <ion-row>
       <ion-col>
         <ion-list>
 
+          <ion-item class="overflow">
+            <ion-label floating>*Pasajero</ion-label>
+            <ion-auto-complete item-content [dataProvider]="passengerProvider" [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
+          </ion-item>
+
           <ion-item>
             <ion-label floating>*Fecha</ion-label>
-            <ion-input  name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
+            <ion-input name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
           </ion-item>
 
           <ion-item>
@@ -22,16 +28,10 @@
           </ion-item>
 
           <ion-item>
-            
-            <ion-auto-complete [dataProvider]="passengerProvider"></ion-auto-complete>
-            
-          </ion-item>
-
-          <ion-item>
             <ion-label floating>*Dirección de inicio</ion-label>
             <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
-          
+
           <ion-item>
             <ion-label floating>*Dirección de fin</ion-label>
             <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>

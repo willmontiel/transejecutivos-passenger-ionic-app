@@ -1,5 +1,9 @@
 page-request-service {
-    .input-cover{
-        display: none;
-    }
+  .input-cover {
+    display: none;
+  }
+  .overflow {
+    contain: none;
+    overflow: visible;
+  }
 }

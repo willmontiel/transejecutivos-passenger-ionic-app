@@ -1,4 +1,4 @@
-import {AutoCompleteService} from 'ionic2-auto-complete';
+import { AutoCompleteService } from 'ionic2-auto-complete';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
@@ -18,7 +18,7 @@ export class PassengerProvider {
   constructor(public http: Http,
     private globalProvider: GlobalProvider,
     private apiConfigProvider: ApiConfigProvider) {
-    
+
     this.user = globalProvider.getUser();
   }
 
@@ -31,4 +31,15 @@ export class PassengerProvider {
       .map(res => <any[]>res.json().data.filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()) ))
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
+
+  /*
+  getResults(keyword: string) {
+    return this.http.get("https://restcountries.eu/rest/v1/name/" + keyword)
+      .map(
+        result => {
+          return result.json()
+            .filter(item => item.name.toLowerCase().startsWith(keyword.toLowerCase()))
+        });
+  }
+  */
 }

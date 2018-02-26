@@ -27,8 +27,8 @@ import { GlobalProvider } from '../providers/global/global';
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
 import { DatePicker } from '@ionic-native/date-picker';
-import { AutoCompleteModule } from 'ionic2-auto-complete';
 import { PassengerProvider } from '../providers/passenger/passenger';
+import { AutoCompleteModule } from 'ionic2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { PassengerProvider } from '../providers/passenger/passenger';
   ],
   imports: [
     BrowserModule,
+    AutoCompleteModule,
     IonicModule.forRoot(MyApp, {
       monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       monthShortNames: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
@@ -53,8 +54,7 @@ import { PassengerProvider } from '../providers/passenger/passenger';
     IonicStorageModule.forRoot({
       name: '__transejecutivosp',
          driverOrder: ['sqlite', 'indexeddb', 'websql']
-    }),
-    AutoCompleteModule
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

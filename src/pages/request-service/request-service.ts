@@ -16,8 +16,6 @@ import moment from 'moment';
 import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
 import { DatePicker } from '@ionic-native/date-picker';
-//Vendors
-import {AutoCompleteModule} from 'ionic2-auto-complete';
 
 @Component({
   selector: 'page-request-service',
