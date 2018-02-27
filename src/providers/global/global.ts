@@ -17,4 +17,8 @@ export class GlobalProvider {
     return this.user;
   }
 
+  public deleteUser() {
+    this.user = null;
+  }
+
 }

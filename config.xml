@@ -3,7 +3,7 @@
     <name>Transportes Ejecutivos</name>
     <description>Transportes Ejecutivos passengers app.</description>
     <author email="will.montiel@outlook.com" href="http://willmontiel.github.io/">Will Montiel</author>
-    <content original-src="index.html" src="http://192.168.0.39:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -87,8 +87,9 @@
     <allow-navigation href="http://192.168.0.14:8100" />
     <allow-navigation href="http://192.168.0.39:8100" />
     <plugin name="call-number" spec="^1.0.1" />
-    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
-    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
-    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
+    <allow-navigation href="http://192.168.0.11:8100" />
+    <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
 </widget>

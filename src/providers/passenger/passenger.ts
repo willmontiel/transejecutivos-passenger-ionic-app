@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 //Providers
 import { ApiConfigProvider } from '../api-config/api-config';
-import { GlobalProvider } from '../../providers/global/global';
 //Models
 import { User } from '../../models/user';
 
@@ -17,10 +16,11 @@ export class PassengerProvider {
   user: User;
 
   constructor(public http: Http,
-    private globalProvider: GlobalProvider,
     private apiConfigProvider: ApiConfigProvider) {
+  }
 
-    this.user = globalProvider.getUser();
+  setUser(user: User) {
+    this.user = user;
   }
 
   getResults(keyword:string) {

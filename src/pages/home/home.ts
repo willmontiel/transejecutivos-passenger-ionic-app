@@ -107,6 +107,7 @@ export class HomePage {
   logout() {
     this.dbProvider.removeUser().then(() => {
       this.navCtrl.push(LoginPage);
+      this.globalProvider.deleteUser();
     });
   }
 }

@@ -52,6 +52,8 @@ export class RequestServicePage {
     private datePicker: DatePicker) {
 
     this.user = globalProvider.getUser();
+    passengerProvider.setUser(this.user);
+    
     this.getCarTypes();
     this.getAerolines();
 
@@ -131,16 +133,11 @@ export class RequestServicePage {
     this.data.date = moment(this.data.startDate, 'DD MMM/YYYY').format('YYYY-MM-DD');
 
     if (this.user.type == 'company') {
-      let passenger =
-       this.searchbar.getSelection();
+      let passenger = this.searchbar.getSelection();
       if (passenger) {
-        this.data.idPassenger = passenger;
+        this.data.idPassenger = passenger.idPassenger;
       }
     }
-
-    console.log("date", this.data.date);
-    console.log("startDate", this.data.startDate);
-    console.log("starTime", this.data.time);
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;

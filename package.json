@@ -63,13 +63,13 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-sqlite-storage": {},
       "mx.ferreyra.callnumber": {},
-      "cordova-sms-plugin": {},
       "call-number": {},
-      "cordova-plugin-datepicker": {}
+      "cordova-plugin-datepicker": {},
+      "cordova-sms-plugin": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }
