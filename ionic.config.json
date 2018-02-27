@@ -4,9 +4,5 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  },
-  "proxies": [{
-    "path": "/api",
-    "proxyUrl": "http://app.transportesejecutivos.com"
-  }]
+  }
 }

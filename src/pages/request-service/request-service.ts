@@ -125,19 +125,27 @@ export class RequestServicePage {
   }
 
   requestService(): void {
-    let loading = this.loadingCtrl.create({
-      content: 'Cargando'
-    });
-    loading.present();
-
     this.data.date = moment(this.data.startDate, 'DD MMM/YYYY').format('YYYY-MM-DD');
 
     if (this.user.type == 'company') {
       let passenger = this.searchbar.getSelection();
-      if (passenger) {
+      if (passenger && passenger.idPassenger) {
         this.data.idPassenger = passenger.idPassenger;
+        this.doRequest();
+      } else {
+        let alert = this.miscProvider.createAlert("Error", "Por favor seleccione un pasajero", ['Cerrar']);
+        alert.present();
       }
+    } else {
+      this.doRequest();
     }
+  }
+
+  doRequest(): void {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando'
+    });
+    loading.present();
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;
