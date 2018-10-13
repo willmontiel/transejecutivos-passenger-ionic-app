@@ -32,6 +32,12 @@
       </ion-row>
 
       <ion-row>
+        <ion-col class="mt-10 mb-20 secondary-fg" (click)="goToRecoverPasswordPage()">
+          ¿Olvidó su contraseña?
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
         <ion-col class="p-5">
           {{ apiConfigProvider.getVersion() }}
         </ion-col>

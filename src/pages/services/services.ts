@@ -53,7 +53,7 @@ export class ServicesPage {
       content: 'Cargando'
     });
     loading.present();
-
+    
     this.serviceProvider.getServicesByDate(data, this.user).subscribe(services => {
       this.services = services;
 

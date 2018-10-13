@@ -10,6 +10,7 @@ import { GlobalProvider } from '../../providers/global/global';
 import { ApiConfigProvider } from '../../providers/api-config/api-config';
 //Pages
 import { HomePage } from '../../pages/home/home';
+import { RecoverPasswordPage } from '../../pages/recover-password/recover-password';
 
 @Component({
   selector: 'page-login',
@@ -61,4 +62,7 @@ export class LoginPage {
     });
   }
 
+  goToRecoverPasswordPage() {
+    this.navCtrl.push(RecoverPasswordPage);
+  }
 }

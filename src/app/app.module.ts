@@ -11,6 +11,7 @@ import { LoginPage } from '../pages/login/login';
 import { RequestServicePage } from '../pages/request-service/request-service';
 import { AutoCompletePage } from '../pages/auto-complete/auto-complete';
 import { ProfilePage } from '../pages/profile/profile';
+import { RecoverPasswordPage } from '../pages/recover-password/recover-password';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -39,7 +40,8 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     ServicePage,
     RequestServicePage,
     AutoCompletePage,
-    ProfilePage
+    ProfilePage,
+    RecoverPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     ServicePage,
     RequestServicePage,
     AutoCompletePage,
-    ProfilePage
+    ProfilePage,
+    RecoverPasswordPage
   ],
   providers: [
     StatusBar,
