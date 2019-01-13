@@ -4,5 +4,11 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "pro_id": "com.development.transportesejecutivos"
+  "pro_id": "com.development.transportesejecutivos",
+  "proxies": [
+    {
+      "path":"/api",
+      "proxyUrl": "http://dev.transejecutivos.com"
+    }
+  ]
 }
