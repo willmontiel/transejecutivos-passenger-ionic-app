@@ -51,6 +51,16 @@ export class ServiceProvider {
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 
+  getLists(user: User): Observable<any[]> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.get(this.apiConfigProvider.get().getLists, options)
+      .map(res => <any[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
   searchPassenger(user: User): Observable<Passenger[]> {
     this.headers = new Headers();
     this.headers.append('Authorization', user.api_key);

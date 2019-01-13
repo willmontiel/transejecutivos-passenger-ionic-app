@@ -14,6 +14,7 @@ export class ApiConfigProvider {
   searchCarType: string = "cartype/searchcartype";
   getCarTypes: string = "cartype/getall";
   getAerolines: string = "aeroline/getall";
+  getLists: string = "lists/getall";
   searchPassenger: string = "passenger/search";
   getServicesByDate: string = "getservicesbydate";
   requestService: string = "requestservice";
@@ -29,6 +30,7 @@ export class ApiConfigProvider {
       searchCarType: URL_BASE + "/" + this.searchCarType,
       getCarTypes: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.getCarTypes,
       getAerolines: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.getAerolines,
+      getLists: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.getLists,
       searchPassenger: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.searchPassenger,
       requestService: URL_BASE + "/" + API_BASE + "/" + API_V1 + "/" + this.requestService,
       updateProfile: URL_BASE + "/" + API_GENERAL_BASE + "/" + API_V1 + "/" + this.updateProfile,

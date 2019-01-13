@@ -27,6 +27,8 @@ export class RequestServicePage {
     date: '',
     time: '',
     passengers: 1,
+    startAddressType: 1,
+    endAddressType: 1,
     idAeroline: null
   };
 
@@ -35,9 +37,11 @@ export class RequestServicePage {
 
   user: User;
   service: Service;
-  carTypes: CarType[];
-  aerolines: Aeroline[];
+  carTypes: [];
+  aerolines: [];
   passengers: Passenger[];
+  startAddressHistory: [];
+  endAddressHistory: [];
   loading: any;
   minDate: string;
 
@@ -54,8 +58,7 @@ export class RequestServicePage {
     this.user = globalProvider.getUser();
     passengerProvider.setUser(this.user);
     
-    this.getCarTypes();
-    this.getAerolines();
+    this.getLists();
 
     this.minDate = moment().format('YYYY-MM-DD');
   }
@@ -90,6 +93,26 @@ export class RequestServicePage {
       date => this.data.time = moment(date).format('HH:mm'),
       err => console.log('Error occurred while getting date: ', err)
     );
+  }
+
+  getLists() {
+    let loading = this.loadingCtrl.create({
+      content: 'Cargando'
+    });
+    loading.present();
+
+    this.serviceProvider.getLists(this.user).subscribe(data => {
+      this.carTypes = data.carTypes;
+      this.aerolines = data.aerolines;
+      this.startAddressHistory = data.startAddressHistory;
+      this.endAddressHistory = data.endAddressHistory;
+
+      loading.dismiss();
+    }, err => {
+      loading.dismiss();
+      let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);
+      alert.present();
+    });
   }
 
   getCarTypes() {
