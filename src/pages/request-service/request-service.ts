@@ -17,6 +17,7 @@ import { AutoCompletePage } from '../../pages/auto-complete/auto-complete';
 import { ServicePage } from '../../pages/service/service';
 import { DatePicker } from '@ionic-native/date-picker';
 import { AutoCompleteComponent } from 'ionic2-auto-complete';
+import { ServiceLocation } from '../../models/service-location';
 
 @Component({
   selector: 'page-request-service',
@@ -37,11 +38,11 @@ export class RequestServicePage {
 
   user: User;
   service: Service;
-  carTypes: [];
-  aerolines: [];
+  carTypes: CarType[];
+  aerolines: Aeroline[];
   passengers: Passenger[];
-  startAddressHistory: [];
-  endAddressHistory: [];
+  startAddressHistory: ServiceLocation[];
+  endAddressHistory: ServiceLocation[];
   loading: any;
   minDate: string;
 
