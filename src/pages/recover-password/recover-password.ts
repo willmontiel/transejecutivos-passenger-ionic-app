@@ -7,11 +7,9 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { MiscProvider } from '../../providers/misc/misc';
 import { DbProvider } from '../../providers/db/db';
 import { GlobalProvider } from '../../providers/global/global';
-import { ApiConfigProvider } from '../../providers/api-config/api-config';
 //Pages
 import { LoginPage } from '../../pages/login/login';
 
-@IonicPage()
 @Component({
   selector: 'page-recover-password',
   templateUrl: 'recover-password.html',
