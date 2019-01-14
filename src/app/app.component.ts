@@ -4,10 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ServicesPage } from '../pages/services/services';
 import { LoginPage } from '../pages/login/login';
 //Providers
-import { DbProvider } from '../providers/db/db';
+import { LocalStorageProvider } from '../providers/global/local-storage';
 import { GlobalProvider } from '../providers/global/global';
 
 @Component({
@@ -21,8 +20,8 @@ export class MyApp {
   constructor(public platform: Platform, 
     public statusBar: StatusBar,
     public splashScreen: SplashScreen, 
-    public dbProvider: DbProvider,
-    public globalProvider: GlobalProvider) {
+    public globalProvider: GlobalProvider, 
+    public localStorageProvider: LocalStorageProvider) {
     this.initializeApp();
   }
 
@@ -43,13 +42,13 @@ export class MyApp {
   }
 
   private validateSession() {
-    this.dbProvider.getUser().then((user) => { 
-      if (!user) {
-        this.rootPage = LoginPage;
-      } else {
-        this.rootPage = HomePage;
-        this.globalProvider.setUser(JSON.parse(user));
-      }
-    });
+    let user = this.localStorageProvider.get(this.localStorageProvider.getUserKey());
+    console.log(user);
+    if (!user) {
+      this.rootPage = LoginPage;
+    } else {
+      this.globalProvider.setUser(user);
+      this.rootPage = HomePage;
+    }
   }
 }

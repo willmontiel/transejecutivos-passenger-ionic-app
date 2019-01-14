@@ -23,6 +23,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ApiConfigProvider } from '../providers/api-config/api-config';
 import { DbProvider } from '../providers/db/db';
 import { GlobalProvider } from '../providers/global/global';
+import { LocalStorageProvider } from '../providers/global/local-storage';
 
 //Vendors
 import { CallNumber } from '@ionic-native/call-number';
@@ -80,6 +81,7 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     ApiConfigProvider,
     DbProvider,
     GlobalProvider,
+    LocalStorageProvider,
     CallNumber,
     SMS,
     DatePicker,

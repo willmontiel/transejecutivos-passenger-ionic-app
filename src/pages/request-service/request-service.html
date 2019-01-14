@@ -43,7 +43,7 @@
           <ion-item class="bg-blue-light" *ngIf="data.startAddressType == 1">
             <ion-label>*Inicio</ion-label>
             <ion-select name="startAddress" placeholder="Seleccione" [(ngModel)]="data.startAddress" okText="Aceptar" cancelText="Cerrar" required>
-              <ion-option value="{{startAddress}}" *ngFor="let startAddress of startAddressHistory">{{ startAddress.address }}</ion-option>
+              <ion-option [value]="startAddress" *ngFor="let startAddress of startAddressHistory">{{ startAddress.address }}</ion-option>
             </ion-select>
           </ion-item>
 
@@ -71,7 +71,7 @@
           <ion-item class="bg-green-light mb-25" *ngIf="data.endAddressType == 1">
             <ion-label>*Fin</ion-label>
             <ion-select name="endAddress" placeholder="Seleccione" [(ngModel)]="data.endAddress" okText="Aceptar" cancelText="Cerrar" required>
-              <ion-option value="{{endAddress}}" *ngFor="let endAddress of endAddressHistory">{{ endAddress.address }}</ion-option>
+              <ion-option [value]="endAddress" *ngFor="let endAddress of endAddressHistory">{{ endAddress.address }}</ion-option>
             </ion-select>
           </ion-item>
 

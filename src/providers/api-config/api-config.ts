@@ -38,6 +38,6 @@ export class ApiConfigProvider {
   }
 
   getVersion() {
-    return 'Versión 2.1';
+    return 'Versión 2.1.0';
   }
 }
