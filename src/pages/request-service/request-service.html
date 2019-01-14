@@ -24,14 +24,60 @@
             <ion-input name="time" (click)="showTimePicker()" [(ngModel)]="data.time" required readonly></ion-input>
           </ion-item>
 
-          <ion-item>
-            <ion-label floating>*Dirección de inicio</ion-label>
-            <ion-input name="startAddress" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
+          <ion-list class="mt-32 mb-0 bg-blue-light" name="startAddressType" radio-group [(ngModel)]="data.startAddressType">
+            <ion-list-header class="bg-blue-light">
+                *Dirección de inicio
+            </ion-list-header>
+            
+            <ion-item class="bg-blue-light">
+              <ion-label>Lista más usadas</ion-label>
+              <ion-radio value="1" checked></ion-radio>
+            </ion-item>
+
+            <ion-item class="bg-blue-light">
+              <ion-label>Nueva dirección</ion-label>
+              <ion-radio value="2"></ion-radio>
+            </ion-item>
+          </ion-list>
+
+          <ion-item class="bg-blue-light" *ngIf="data.startAddressType == 1">
+            <ion-label>*Inicio</ion-label>
+            <ion-select name="startAddress" placeholder="Seleccione" [(ngModel)]="data.startAddress" okText="Aceptar" cancelText="Cerrar" required>
+              <ion-option [value]="startAddress" *ngFor="let startAddress of startAddressHistory">{{ startAddress.address }}</ion-option>
+            </ion-select>
           </ion-item>
 
-          <ion-item>
-            <ion-label floating>*Dirección de fin</ion-label>
-            <ion-input name="endAddress" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+          <ion-item class="bg-blue-light" *ngIf="data.startAddressType == 2">
+            <ion-label>*Inicio</ion-label>
+            <ion-input name="startAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
+          </ion-item>
+
+          <ion-list class="mt-32 mb-0 bg-green-light" name="endAddressType" radio-group [(ngModel)]="data.endAddressType">
+            <ion-list-header class="bg-green-light">
+                *Dirección de fin
+            </ion-list-header>
+
+            <ion-item class="bg-green-light">
+              <ion-label>Lista más usadas</ion-label>
+              <ion-radio value="1" checked></ion-radio>
+            </ion-item>
+
+            <ion-item class="bg-green-light">
+              <ion-label>Nueva dirección</ion-label>
+              <ion-radio value="2"></ion-radio>
+            </ion-item>
+          </ion-list>
+
+          <ion-item class="bg-green-light mb-25" *ngIf="data.endAddressType == 1">
+            <ion-label>*Fin</ion-label>
+            <ion-select name="endAddress" placeholder="Seleccione" [(ngModel)]="data.endAddress" okText="Aceptar" cancelText="Cerrar" required>
+              <ion-option [value]="endAddress" *ngFor="let endAddress of endAddressHistory">{{ endAddress.address }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item class="bg-green-light mb-25" *ngIf="data.endAddressType == 2">
+            <ion-label>*Fin</ion-label>
+            <ion-input name="endAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>

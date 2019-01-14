@@ -1,8 +1,8 @@
 {
   "name": "Transportes Ejecutivos",
-  "app_id": "com.development.transportesejecutivos",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "id": "com.development.transportesejecutivos"
 }

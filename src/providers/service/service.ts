@@ -23,7 +23,7 @@ export class ServiceProvider {
   getServicesByDate(data: any, user: User): Observable<Service[]> {
     this.headers = new Headers();
     this.headers.append('Authorization', user.api_key);
-    this.headers.append('Content-Type', 'application/json')
+    this.headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: this.headers });
 
     return this.http.post(this.apiConfigProvider.get().getServicesByDate, data, options)
@@ -48,6 +48,16 @@ export class ServiceProvider {
 
     return this.http.get(this.apiConfigProvider.get().getAerolines, options)
       .map(res => <Aeroline[]>res.json().data)
+      .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
+  }
+
+  getLists(user: User): Observable<any> {
+    this.headers = new Headers();
+    this.headers.append('Authorization', user.api_key);
+    let options = new RequestOptions({ headers: this.headers });
+
+    return this.http.get(this.apiConfigProvider.get().getLists, options)
+      .map(res => <any>res.json().data)
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
 

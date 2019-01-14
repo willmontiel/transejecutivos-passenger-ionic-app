@@ -53,20 +53,16 @@ export class ServicesPage {
       content: 'Cargando'
     });
     loading.present();
-
+    
     this.serviceProvider.getServicesByDate(data, this.user).subscribe(services => {
       this.services = services;
 
       if (!this.services.length) {
-        let alert = this.miscProvider.createAlert("Atención", "No se encontraron reservas", ['Cerrar']);
+        let alert = this.miscProvider.createAlert("Info", "No se encontraron reservas", ['Cerrar']);
         alert.present();
       }
 
       loading.dismiss();
-      if (!this.services.length) {
-        let alert = this.miscProvider.createAlert("Atención", "No se encontraron servicios.", ['Cerrar']);
-        alert.present();
-      }
     }, err => {
       loading.dismiss();
       let alert = this.miscProvider.createAlert("Error", err, ['Cerrar']);

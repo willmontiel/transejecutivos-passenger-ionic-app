@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 //Models
 import { User } from '../../models/user';
+import { LocalStorageProvider } from '../../providers/global/local-storage';
 
 @Injectable()
 export class GlobalProvider {
   user: User;
-  constructor() {
+  constructor(private localStorageProvider: LocalStorageProvider) {
     
   }
 
@@ -18,6 +19,7 @@ export class GlobalProvider {
   }
 
   public deleteUser() {
+    this.localStorageProvider.delete(this.localStorageProvider.getUserKey());
     this.user = null;
   }
 

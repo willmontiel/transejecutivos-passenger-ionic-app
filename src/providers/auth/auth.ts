@@ -37,4 +37,14 @@ export class AuthProvider {
       .map(res => <any>res.json())
       .catch((error:any) => Observable.throw(error.json().message || 'Server error'));
   }
+
+  recoverPassword(credentials) {
+    if (!credentials.username) {
+      return Observable.throw("Por favor digite su dirección de correo electrónico.");
+    }
+
+    return this.http.post(this.apiConfigProvider.get().recoverPassword, credentials)
+      .map(res => <any>res.json())
+      .catch((error:any) => Observable.throw(error.json().message || console.log(JSON.stringify(error)) + 'Server error'));
+  }
 }
