@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoadingController, IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { LoadingController, NavController, NavParams, ModalController } from 'ionic-angular';
 //Models
 import { User } from '../../models/user';
 import { Service } from '../../models/service';
@@ -56,8 +56,8 @@ export class RequestServicePage {
     private modalCtrl: ModalController,
     private datePicker: DatePicker) {
 
-    this.user = globalProvider.getUser();
-    passengerProvider.setUser(this.user);
+    this.user = this.globalProvider.getUser();
+    this.passengerProvider.setUser(this.user);
     
     this.getLists();
 
@@ -170,6 +170,10 @@ export class RequestServicePage {
       content: 'Cargando'
     });
     loading.present();
+
+    this.data.date = "2019-01-13";
+    this.data.time = "23:00";
+    console.log("Data", this.data);
 
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;

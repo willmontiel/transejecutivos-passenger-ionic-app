@@ -43,7 +43,6 @@ export class MyApp {
 
   private validateSession() {
     let user = this.localStorageProvider.get(this.localStorageProvider.getUserKey());
-    console.log(user);
     if (!user) {
       this.rootPage = LoginPage;
     } else {

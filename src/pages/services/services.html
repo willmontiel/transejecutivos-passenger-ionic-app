@@ -76,6 +76,10 @@
             <ion-col col-9>
               <ion-item no-padding text-wrap>
                 <ion-icon name="car"></ion-icon>
+                {{ service?.driver?.car?.licensePlate }}
+              </ion-item>
+
+              <ion-item no-padding text-wrap>
                 {{ service?.driver?.name }} {{ service?.driver?.lastname }}
               </ion-item>
             </ion-col>

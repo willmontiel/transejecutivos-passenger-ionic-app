@@ -13,7 +13,7 @@
           <ion-item *ngIf="this.user.type == 'company'" class="overflow pb-0" padding>
             <ion-auto-complete item-content [dataProvider]="passengerProvider" #searchbar [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
           </ion-item>
-
+<!--
           <ion-item class="pt-0" padding>
             <ion-label floating>*Fecha {{data.idPassenger}}</ion-label>
             <ion-input name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
@@ -23,7 +23,7 @@
             <ion-label floating>*Hora</ion-label>
             <ion-input name="time" (click)="showTimePicker()" [(ngModel)]="data.time" required readonly></ion-input>
           </ion-item>
-
+-->
           <ion-list class="mt-32 mb-0 bg-blue-light" name="startAddressType" radio-group [(ngModel)]="data.startAddressType">
             <ion-list-header class="bg-blue-light">
                 *Dirección de inicio
@@ -42,7 +42,7 @@
 
           <ion-item class="bg-blue-light" *ngIf="data.startAddressType == 1">
             <ion-label>*Inicio</ion-label>
-            <ion-select name="startAddress" placeholder="Seleccione" [(ngModel)]="data.startAddress" okText="Aceptar" cancelText="Cerrar" required>
+            <ion-select name="source" placeholder="Seleccione" [(ngModel)]="data.source" okText="Aceptar" cancelText="Cerrar" required>
               <ion-option [value]="startAddress" *ngFor="let startAddress of startAddressHistory">{{ startAddress.address }}</ion-option>
             </ion-select>
           </ion-item>
@@ -70,7 +70,7 @@
 
           <ion-item class="bg-green-light mb-25" *ngIf="data.endAddressType == 1">
             <ion-label>*Fin</ion-label>
-            <ion-select name="endAddress" placeholder="Seleccione" [(ngModel)]="data.endAddress" okText="Aceptar" cancelText="Cerrar" required>
+            <ion-select name="destiny" placeholder="Seleccione" [(ngModel)]="data.destiny" okText="Aceptar" cancelText="Cerrar" required>
               <ion-option [value]="endAddress" *ngFor="let endAddress of endAddressHistory">{{ endAddress.address }}</ion-option>
             </ion-select>
           </ion-item>
@@ -114,7 +114,7 @@
 
     <ion-row>
       <ion-col class="signup-col">
-        <button ion-button color="secondary" full type="submit" [disabled]="!requestServiceForm.form.valid || !data.startAddress || !data.endAddress">Solicitar</button>
+        <button ion-button color="secondary" full type="submit" [disabled]="!requestServiceForm.form.valid || !data.source || !data.destiny">Solicitar</button>
       </ion-col>
     </ion-row>
   </form>
