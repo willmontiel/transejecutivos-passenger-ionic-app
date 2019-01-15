@@ -171,10 +171,6 @@ export class RequestServicePage {
     });
     loading.present();
 
-    this.data.date = "2019-01-13";
-    this.data.time = "23:00";
-    console.log("Data", this.data);
-
     this.serviceProvider.requestService(this.data, this.user).subscribe(service => {
       this.service = service;
       loading.dismiss();
