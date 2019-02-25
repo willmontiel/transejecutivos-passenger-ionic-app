@@ -14,6 +14,13 @@
             <ion-auto-complete item-content [dataProvider]="passengerProvider" #searchbar [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
           </ion-item>
 
+          <ion-item class="overflow pb-0" padding>
+              <ion-label floating>*Centro de costos</ion-label>
+              <ion-select name="idCostCenter" [(ngModel)]="data.idCostCenter" okText="Aceptar" cancelText="Cerrar" required>
+                <ion-option value="{{costCenter.idCostCenter}}" *ngFor="let costCenter of costCenters">{{ costCenter.name }}</ion-option>
+              </ion-select>
+          </ion-item>
+
           <ion-item class="pt-0" padding>
             <ion-label floating>*Fecha {{data.idPassenger}}</ion-label>
             <ion-input name="startDate" (click)="showDatePicker()" [(ngModel)]="data.startDate" required readonly></ion-input>
@@ -49,7 +56,10 @@
 
           <ion-item class="bg-blue-light" *ngIf="data.startAddressType == 2">
             <ion-label>*Inicio</ion-label>
-            <ion-input name="startAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
+            <!--
+              <ion-input name="startAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('source')" [(ngModel)]="data.startAddress" type="text"></ion-input>
+            -->
+            <ion-input name="startAddress" placeholder="Escriba la dirección" [(ngModel)]="data.startAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-list class="mt-32 mb-0 bg-green-light" name="endAddressType" radio-group [(ngModel)]="data.endAddressType">
@@ -77,7 +87,10 @@
 
           <ion-item class="bg-green-light mb-25" *ngIf="data.endAddressType == 2">
             <ion-label>*Fin</ion-label>
-            <ion-input name="endAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>
+            <!--
+              <ion-input name="endAddress" placeholder="Escriba la dirección" (ionFocus)="showAddressModal('destiny')" [(ngModel)]="data.endAddress" type="text"></ion-input>  
+            -->
+            <ion-input name="endAddress" placeholder="Escriba la dirección" [(ngModel)]="data.endAddress" type="text"></ion-input>
           </ion-item>
 
           <ion-item>

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoadingController, ToastController, AlertController } from 'ionic-angular';
 //Native
 import { CallNumber } from '@ionic-native/call-number';
-import { SMS } from '@ionic-native/sms';
+//import { SMS } from '@ionic-native/sms';
 
 @Injectable()
 export class MiscProvider {
@@ -10,8 +10,9 @@ export class MiscProvider {
   constructor(public loadingCtrl: LoadingController, 
     private alertCtrl: AlertController,
     public toastCtrl: ToastController,
-    private callNumber: CallNumber,
-    private sms: SMS) { 
+    private callNumber: CallNumber
+    //private sms: SMS
+    ) { 
 
   }
 
@@ -60,6 +61,7 @@ export class MiscProvider {
     }
   }
 
+  /*
   sendSMSToDriver(service) {
     let options: any = {
         android: {
@@ -73,4 +75,5 @@ export class MiscProvider {
       this.sms.send(service.driver.phone2, 'Hola, ', options);
     }
   }
+  */
 }

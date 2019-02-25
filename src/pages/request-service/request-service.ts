@@ -6,6 +6,7 @@ import { Service } from '../../models/service';
 import { CarType } from '../../models/car-type';
 import { Aeroline } from '../../models/aeroline';
 import { Passenger } from '../../models/passenger';
+import { CostCenter } from '../../models/cost-center';
 //Providers
 import { ServiceProvider } from '../../providers/service/service';
 import { MiscProvider } from '../../providers/misc/misc';
@@ -41,6 +42,7 @@ export class RequestServicePage {
   carTypes: CarType[];
   aerolines: Aeroline[];
   passengers: Passenger[];
+  costCenters: CostCenter[];
   startAddressHistory: ServiceLocation[];
   endAddressHistory: ServiceLocation[];
   loading: any;
@@ -105,6 +107,7 @@ export class RequestServicePage {
     this.serviceProvider.getLists(this.user).subscribe(data => {
       this.carTypes = data.carTypes;
       this.aerolines = data.aerolines;
+      this.costCenters = data.costCenters;
       this.startAddressHistory = data.startAddressHistory;
       this.endAddressHistory = data.endAddressHistory;
 
