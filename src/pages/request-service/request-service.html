@@ -14,7 +14,7 @@
             <ion-auto-complete item-content [dataProvider]="passengerProvider" #searchbar [options]="{ placeholder : 'Buscar pasajero' }"></ion-auto-complete>
           </ion-item>
 
-          <ion-item class="overflow pb-0" padding>
+          <ion-item *ngIf="this.user.settings.serviceRequestCostCenter == 1" class="overflow pb-0" padding>
               <ion-label floating>*Centro de costos</ion-label>
               <ion-select name="idCostCenter" [(ngModel)]="data.idCostCenter" okText="Aceptar" cancelText="Cerrar" required>
                 <ion-option value="{{costCenter.idCostCenter}}" *ngFor="let costCenter of costCenters">{{ costCenter.name }}</ion-option>

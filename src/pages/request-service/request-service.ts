@@ -60,7 +60,6 @@ export class RequestServicePage {
 
     this.user = this.globalProvider.getUser();
     this.passengerProvider.setUser(this.user);
-    
     this.getLists();
 
     this.minDate = moment().format('YYYY-MM-DD');
