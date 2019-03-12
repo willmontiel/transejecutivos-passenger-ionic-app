@@ -27,7 +27,6 @@ import { LocalStorageProvider } from '../providers/global/local-storage';
 
 //Vendors
 import { CallNumber } from '@ionic-native/call-number';
-import { SMS } from '@ionic-native/sms';
 import { DatePicker } from '@ionic-native/date-picker';
 import { PassengerProvider } from '../providers/passenger/passenger';
 import { AutoCompleteModule } from 'ionic2-auto-complete';
@@ -83,7 +82,6 @@ import { AutoCompleteModule } from 'ionic2-auto-complete';
     GlobalProvider,
     LocalStorageProvider,
     CallNumber,
-    SMS,
     DatePicker,
     PassengerProvider
   ]
